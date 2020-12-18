@@ -10,4 +10,10 @@ spring:
     password: changeme
   jackson:
     property-naming-strategy: LOWER_CAMEL_CASE
+  #springdoc.swagger-ui.path=/swagger-ui-custom.html
+  #springdoc.swagger-ui.operationsSorter=method
+springdoc:
+  swagger-ui:
+    path: /swagger-ui-patient.html
+    operations-sorter: method
 
