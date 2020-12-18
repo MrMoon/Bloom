@@ -5,7 +5,9 @@ spring:
   application:
     name: patient-service
   r2dbc:
-    url: r2dbc:postgresql://localhost:5432/${spring.application.name}
+    url: r2dbc:postgresql://localhost:5432/patient-database
     username: postgres
     password: changeme
+  jackson:
+    property-naming-strategy: LOWER_CAMEL_CASE
 

@@ -9,6 +9,7 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping("/patient")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class PatientController {
 
     private final PatientService patientService;
