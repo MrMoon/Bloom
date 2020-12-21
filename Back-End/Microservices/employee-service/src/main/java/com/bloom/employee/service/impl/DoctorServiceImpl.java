@@ -1,0 +1,35 @@
+package com.bloom.employee.service.impl;
+
+import com.bloom.employee.model.Doctor;
+import com.bloom.employee.repository.DoctorRepository;
+import com.bloom.employee.service.DoctorService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
+
+@Service
+@RequiredArgsConstructor
+public class DoctorServiceImpl implements DoctorService {
+
+    private final DoctorRepository doctorRepository;
+
+    @Override
+    public Mono<Doctor> createDoctor(Doctor doctor) {
+        return this.doctorRepository.save(doctor);
+    }
+
+    @Override
+    public Mono<Doctor> getDoctorById(Long doctorId) {
+        return this.doctorRepository.findById(doctorId);
+    }
+
+    @Override
+    public Mono<Doctor> updateDoctor(Doctor doctor) {
+        return this.doctorRepository.save(doctor);
+    }
+
+    @Override
+    public Mono<Void> deleteDoctorById(Long doctorId) {
+        return this.doctorRepository.deleteById(doctorId);
+    }
+}
