@@ -23,11 +23,16 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public Mono<Doctor> getDoctorById(Long doctorId) {
-        return this.doctorRepository.findById(doctorId);
+        return this.doctorRepository.findById(doctorId).map(doctor -> {
+            doctor.setJobType(JobType.DOCTOR);
+            return doctor;
+        });
     }
 
     @Override
     public Mono<Doctor> updateDoctor(Doctor doctor) {
+        doctor.setJobType(JobType.DOCTOR);
+        doctor.setEmployeeJobType(doctor.getJobType().name());
         return this.doctorRepository.save(doctor);
     }
 

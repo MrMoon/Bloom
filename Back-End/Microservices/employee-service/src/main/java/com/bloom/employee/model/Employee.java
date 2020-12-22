@@ -13,7 +13,7 @@ public class Employee {
     private Long employeeId;
     private String employeeName , employeeJobType;
     @Transient
-    private JobType jobType = JobType.EMPLOYEE;
+    private JobType jobType;
     private Double employeeSalary;
     private LocalDate employeeDateOfBirth;
 
