@@ -1,0 +1,14 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: employee-service
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/employee-database
+    username: postgres
+    password: changeme
+springdoc:
+  swagger-ui:
+    path: /swagger-ui-patient.html
+    operations-sorter: method
