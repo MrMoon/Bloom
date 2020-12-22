@@ -1,6 +1,7 @@
 package com.bloom.employee.service.impl;
 
 import com.bloom.employee.model.Doctor;
+import com.bloom.employee.model.JobType;
 import com.bloom.employee.repository.DoctorRepository;
 import com.bloom.employee.service.DoctorService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,8 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public Mono<Doctor> createDoctor(Doctor doctor) {
+        doctor.setJobType(JobType.DOCTOR);
+        doctor.setEmployeeJobType(doctor.getJobType().name());
         return this.doctorRepository.save(doctor);
     }
 
