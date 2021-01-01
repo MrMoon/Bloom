@@ -15,6 +15,7 @@ public class Patient {
     private String patientName;
     private LocalDate patientDateOfBirth;
     private Boolean isAdmitted;
+    private Gender gender;
     @Transient
     private Integer patientAge;
 
