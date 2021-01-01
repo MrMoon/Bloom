@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/hospital/inventory")
+@RequestMapping("/hospital/room")
 public class RoomController {
 
     private final RoomService roomService;

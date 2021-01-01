@@ -8,7 +8,7 @@ public class PatientEntry {
 
     @Id
     private Long patientEntryId;
-    private String patientId;
+    private Long patientId;
     private PatientEntryType patientEntryType;
 
 }

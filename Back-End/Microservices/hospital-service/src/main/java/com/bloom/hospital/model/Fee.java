@@ -12,8 +12,8 @@ public class Fee {
 
     @Id
     private Long feePaymentNumber;
-    private String patientId;
+    private Long patientId;
     private Double feeAmount;
-    private final LocalDate feeDate = LocalDate.ofInstant(Calendar.getInstance().getTime().toInstant() , ZoneId.systemDefault());
+    private LocalDate feeDate = LocalDate.ofInstant(Calendar.getInstance().getTime().toInstant() , ZoneId.systemDefault());
 
 }
