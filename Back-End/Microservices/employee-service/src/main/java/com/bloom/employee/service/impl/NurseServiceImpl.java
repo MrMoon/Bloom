@@ -29,15 +29,15 @@ public class NurseServiceImpl implements NurseService {
     }
 
     @Override
-    public Mono<Nurse> getNurseById(Long nurseId) {
-        return this.nurseRepository.findById(nurseId).map(nurse -> {
+    public Mono<Nurse> getNurseById(String nurseId) {
+        return this.nurseRepository.findById(Long.parseLong(nurseId)).flatMap(nurse -> {
             nurse.setJobType(JobType.NURSE);
-            return nurse;
+            return Mono.just(nurse);
         });
     }
 
     @Override
-    public Mono<Void> deleteNurseById(Long nurseId) {
-        return this.nurseRepository.deleteById(nurseId);
+    public Mono<Void> deleteNurseById(String nurseId) {
+        return this.nurseRepository.deleteById(Long.parseLong(nurseId));
     }
 }
