@@ -17,31 +17,31 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public Mono<Patient> createPatient(Patient patient) {
-        return this.patientRepository.save(patient).map(savedPatient -> {
-            savedPatient.setPatientAge(getAge(savedPatient.getPatientDateOfBirth()));
-            return savedPatient;
+        return this.patientRepository.save(patient).flatMap(savedPatient -> {
+            savedPatient.setPatientAge(this.getAge(savedPatient.getPatientDateOfBirth()));
+            return Mono.just(savedPatient);
         });
     }
 
     @Override
     public Mono<Patient> updatePatient(Patient patient) {
-        return this.patientRepository.save(patient).map(savedPatient -> {
-            savedPatient.setPatientAge(getAge(savedPatient.getPatientDateOfBirth()));
-            return savedPatient;
+        return this.patientRepository.save(patient).flatMap(savedPatient -> {
+            savedPatient.setPatientAge(this.getAge(savedPatient.getPatientDateOfBirth()));
+            return Mono.just(savedPatient);
         });
     }
 
     @Override
-    public Mono<Patient> getPatientById(Long patientId) {
-        return this.patientRepository.findById(patientId).map(patient -> {
-            patient.setPatientAge(getAge(patient.getPatientDateOfBirth()));
-            return patient;
+    public Mono<Patient> getPatientById(String patientId) {
+        return this.patientRepository.findById(Long.parseLong(patientId)).flatMap(patient -> {
+            patient.setPatientAge(this.getAge(patient.getPatientDateOfBirth()));
+            return Mono.just(patient);
         });
     }
 
     @Override
-    public Mono<Void> deletePatientById(Long patientId) {
-        return this.patientRepository.deleteById(patientId);
+    public Mono<Void> deletePatientById(String patientId) {
+        return this.patientRepository.deleteById(Long.parseLong(patientId));
     }
 
     private int getAge(LocalDate birthDate) {
