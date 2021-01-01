@@ -6,6 +6,7 @@ import lombok.Data;
 public class Inventory {
 
     private Long inventoryMangedBy;
-    private String inventoryRecord , inventoryRecordType , inventoryAmount;
+    private Integer inventoryAmount;
+    private String inventoryRecord, inventoryRecordType;
 
 }
