@@ -10,5 +10,5 @@ spring:
     password: changeme
 springdoc:
   swagger-ui:
-    path: /swagger-ui-patient.html
+    path: /swagger-ui-employee.html
     operations-sorter: method

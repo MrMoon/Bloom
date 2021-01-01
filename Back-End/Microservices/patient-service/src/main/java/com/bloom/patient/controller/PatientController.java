@@ -9,14 +9,13 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping("/patient")
 @RequiredArgsConstructor
-@CrossOrigin("*")
 public class PatientController {
 
     private final PatientService patientService;
 
     @GetMapping("/{patientId}")
     public Mono<Patient> getPatientById(@PathVariable("patientId") String patientId) {
-        return this.patientService.getPatientById(Long.parseLong(patientId));
+        return this.patientService.getPatientById(patientId);
     }
 
     @PostMapping("/")
@@ -31,6 +30,6 @@ public class PatientController {
 
     @DeleteMapping("/{patientId}")
     public Mono<Void> deletePatient(@PathVariable("patientId") String patientId) {
-        return this.patientService.deletePatientById(Long.parseLong(patientId));
+        return this.patientService.deletePatientById(patientId);
     }
 }

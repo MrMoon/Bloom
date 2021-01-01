@@ -15,7 +15,7 @@ public class NurseController {
 
     @GetMapping("/{nurseId}")
     public Mono<Nurse> getNurseById(@PathVariable("nurseId") String nurseId) {
-        return this.nurseService.getNurseById(Long.parseLong(nurseId));
+        return this.nurseService.getNurseById(nurseId);
     }
 
     @PostMapping("/")
@@ -30,7 +30,7 @@ public class NurseController {
 
     @DeleteMapping("/{nurseId}")
     public Mono<Void> deleteNurse(@PathVariable("nurseId") String nurseId) {
-        return this.nurseService.deleteNurseById(Long.parseLong(nurseId));
+        return this.nurseService.deleteNurseById(nurseId);
     }
 
 }

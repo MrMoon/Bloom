@@ -14,8 +14,8 @@ public class Patient {
     private Long patientRoomNumber, patientAssignedDoctorId;
     private String patientName;
     private LocalDate patientDateOfBirth;
+    private Boolean isAdmitted;
     @Transient
     private Integer patientAge;
-    private Boolean isAdmitted;
 
 }

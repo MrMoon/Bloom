@@ -23,9 +23,9 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public Mono<Doctor> getDoctorById(Long doctorId) {
-        return this.doctorRepository.findById(doctorId).map(doctor -> {
+        return this.doctorRepository.findById(doctorId).flatMap(doctor -> {
             doctor.setJobType(JobType.DOCTOR);
-            return doctor;
+            return Mono.just(doctor);
         });
     }
 

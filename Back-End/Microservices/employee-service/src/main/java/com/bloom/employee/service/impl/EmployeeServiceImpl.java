@@ -17,17 +17,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Mono<Employee> saveEmployee(Employee employee) {
-        return this.employeeRepository.save(employee).map(savedEmployee -> {
+        return this.employeeRepository.save(employee).flatMap(savedEmployee -> {
             savedEmployee.setJobType(this.getEmployeeJobType(savedEmployee.getEmployeeJobType()));
-            return savedEmployee;
+            return Mono.just(savedEmployee);
         });
     }
 
     @Override
     public Mono<Employee> updateEmployee(Employee employee) {
-        return this.employeeRepository.save(employee).map(updatedEmployee -> {
+        return this.employeeRepository.save(employee).flatMap(updatedEmployee -> {
             updatedEmployee.setJobType(this.getEmployeeJobType(updatedEmployee.getEmployeeJobType()));
-            return updatedEmployee;
+            return Mono.just(updatedEmployee);
         });
     }
 

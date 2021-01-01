@@ -7,7 +7,7 @@ public interface PatientService {
 
     Mono<Patient> createPatient(Patient patient);
     Mono<Patient> updatePatient(Patient patient);
-    Mono<Patient> getPatientById(Long patientId);
-    Mono<Void> deletePatientById(Long patientId);
+    Mono<Patient> getPatientById(String patientId);
+    Mono<Void> deletePatientById(String patientId);
 
 }
