@@ -6,8 +6,6 @@ spring:
     name: employee-service
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/employee-database
-    username: postgres
-    password: changeme
 springdoc:
   swagger-ui:
     path: /swagger-ui-employee.html
