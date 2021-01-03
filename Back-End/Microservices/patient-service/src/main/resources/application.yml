@@ -6,6 +6,8 @@ spring:
     name: patient-service
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/patient-database
+    username: postgres
+    password: changeme
 springdoc:
   swagger-ui:
     path: /swagger-ui-patient.html
