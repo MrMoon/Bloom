@@ -6,10 +6,6 @@ spring:
     name: hospital-service
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/hospital-database
-    username: postgres
-    password: changeme
-  jackson:
-    property-naming-strategy: LOWER_CAMEL_CASE
 springdoc:
   swagger-ui:
     path: /swagger-ui-hospital.html
