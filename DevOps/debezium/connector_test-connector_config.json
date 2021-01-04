@@ -1,0 +1,13 @@
+{
+  "name": "test-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "database.server.name": "bloom-server",
+    "database.hostname": "172.17.0.1",
+    "database.port": "5432",
+    "database.user": "postgres",
+    "database.password": "changeme",
+    "database.dbname": "test",
+    "table.include.list": "public.hello"
+  }
+}
