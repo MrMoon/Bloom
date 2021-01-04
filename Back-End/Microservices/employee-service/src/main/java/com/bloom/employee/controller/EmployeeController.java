@@ -15,7 +15,7 @@ public class EmployeeController {
 
     @GetMapping("/{employeeId}")
     public Mono<Employee> getEmployeeById(@PathVariable("employeeId") String employeeId) {
-        return this.employeeService.getEmployeeById(Long.parseLong(employeeId));
+        return this.employeeService.getEmployeeById(employeeId);
     }
 
     @PostMapping("/")
@@ -30,7 +30,7 @@ public class EmployeeController {
 
     @DeleteMapping("/{employeeId}")
     public Mono<Void> deleteEmployee(@PathVariable("employeeId") String employeeId) {
-        return this.employeeService.deleteEmployeeById(Long.parseLong(employeeId));
+        return this.employeeService.deleteEmployeeById(employeeId);
     }
 
 }

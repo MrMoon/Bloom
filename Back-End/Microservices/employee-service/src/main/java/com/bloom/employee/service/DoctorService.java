@@ -6,8 +6,8 @@ import reactor.core.publisher.Mono;
 public interface DoctorService {
 
     Mono<Doctor> createDoctor(Doctor doctor);
-    Mono<Doctor> getDoctorById(Long doctorId);
+    Mono<Doctor> getDoctorById(String doctorId);
     Mono<Doctor> updateDoctor(Doctor doctor);
-    Mono<Void> deleteDoctorById(Long doctorId);
+    Mono<Void> deleteDoctorById(String doctorId);
 
 }

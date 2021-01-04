@@ -32,16 +32,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Mono<Employee> getEmployeeById(Long employeeId) {
-        return this.employeeRepository.findById(employeeId).map(employee -> {
+    public Mono<Employee> getEmployeeById(String employeeId) {
+        return this.employeeRepository.findById(Long.parseLong(employeeId)).map(employee -> {
             employee.setJobType(this.getEmployeeJobType(employee.getEmployeeJobType()));
             return employee;
         });
     }
 
     @Override
-    public Mono<Void> deleteEmployeeById(Long employeeId) {
-        return this.employeeRepository.deleteById(employeeId);
+    public Mono<Void> deleteEmployeeById(String employeeId) {
+        return this.employeeRepository.deleteById(Long.parseLong(employeeId));
     }
 
     private JobType getEmployeeJobType(@NotNull String jobType) {

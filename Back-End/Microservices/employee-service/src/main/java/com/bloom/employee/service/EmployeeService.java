@@ -7,7 +7,7 @@ public interface EmployeeService {
 
     Mono<Employee> saveEmployee(Employee employee);
     Mono<Employee> updateEmployee(Employee employee);
-    Mono<Employee> getEmployeeById(Long employeeId);
-    Mono<Void> deleteEmployeeById(Long employeeId);
+    Mono<Employee> getEmployeeById(String employeeId);
+    Mono<Void> deleteEmployeeById(String employeeId);
 
 }

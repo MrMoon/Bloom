@@ -2,11 +2,11 @@ package com.bloom.employee.service.impl;
 
 import com.bloom.employee.model.Doctor;
 import com.bloom.employee.model.JobType;
-import com.bloom.employee.repository.DoctorRepository;
-import com.bloom.employee.service.DoctorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
+import com.bloom.employee.service.DoctorService;
+import com.bloom.employee.repository.DoctorRepository;
 
 @Service
 @RequiredArgsConstructor
@@ -22,8 +22,8 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public Mono<Doctor> getDoctorById(Long doctorId) {
-        return this.doctorRepository.findById(doctorId).flatMap(doctor -> {
+    public Mono<Doctor> getDoctorById(String doctorId) {
+        return this.doctorRepository.findById(Long.parseLong(doctorId)).flatMap(doctor -> {
             doctor.setJobType(JobType.DOCTOR);
             return Mono.just(doctor);
         });
@@ -37,7 +37,7 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public Mono<Void> deleteDoctorById(Long doctorId) {
-        return this.doctorRepository.deleteById(doctorId);
+    public Mono<Void> deleteDoctorById(String doctorId) {
+        return this.doctorRepository.deleteById(Long.parseLong(doctorId));
     }
 }
