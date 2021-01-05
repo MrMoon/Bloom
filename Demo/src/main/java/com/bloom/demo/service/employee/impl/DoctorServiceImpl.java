@@ -1,8 +1,10 @@
 package com.bloom.demo.service.employee.impl;
 
 import com.bloom.demo.model.employee.Doctor;
+import com.bloom.demo.model.employee.DoctorAvailableTimes;
 import com.bloom.demo.model.employee.JobType;
 import com.bloom.demo.model.patient.Patient;
+import com.bloom.demo.repository.employee.DoctorAvailableTimesRepository;
 import com.bloom.demo.repository.employee.DoctorRepository;
 import com.bloom.demo.service.employee.DoctorService;
 import com.bloom.demo.service.hospital.FeeService;
@@ -17,6 +19,7 @@ import reactor.core.publisher.Mono;
 public class DoctorServiceImpl implements DoctorService {
 
     private final DoctorRepository doctorRepository;
+    private final DoctorAvailableTimesRepository doctorAvailableTimesRepository;
     private final PatientJoinService patientJoinService;
     private final FeeService feeService;
 
@@ -58,5 +61,12 @@ public class DoctorServiceImpl implements DoctorService {
                 .getDoctorPatients(doctorId)
                 .flatMap(patient -> this.feeService.getPatientFinalPrice(patient.getPatientId().toString()))
                 .reduce(0.0 , Double::sum);
+    }
+
+    @Override
+    public Flux<DoctorAvailableTimes> getDoctorAvailableTimes(String doctorId) {
+        return this.doctorAvailableTimesRepository
+                .findAllByDoctorId(Long.parseLong(doctorId))
+                .distinct();
     }
 }

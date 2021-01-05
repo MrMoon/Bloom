@@ -39,7 +39,9 @@ public class PatientJoinServiceImpl implements PatientJoinService {
 
     @Override
     public Mono<Doctor> getPatientDoctor(String patientId) {
-        return this.patientRepository.findById(Long.parseLong(patientId)).flatMap(patient -> this.doctorRepository.findById(patient.getPatientAssignedDoctorId()));
+        return this.patientRepository
+                .findById(Long.parseLong(patientId))
+                .flatMap(patient -> this.doctorRepository.findById(patient.getPatientAssignedDoctorId()));
     }
 
     @Override
