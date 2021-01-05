@@ -8,6 +8,21 @@ spring:
     url: r2dbc:postgresql://localhost:5432/patient-database
     username: postgres
     password: changeme
+  cloud:
+    function:
+      definition: patientStateProcessor;
+    stream:
+      kafka:
+        streams:
+          binder:
+            application-id: bloom-patient
+            configuration:
+              auto.offset.reset: earliest
+
+      bindings:
+        patientStateProcessor-in-0.destination: bloom-server.public.patient
+        patientStateProcessor-out-0.destination: state-store-test
+
 springdoc:
   swagger-ui:
     path: /swagger-ui-patient.html
