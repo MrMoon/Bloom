@@ -41,6 +41,9 @@ public class FeeServiceImpl implements FeeService {
 
     @Override
     public Mono<Double> getPatientFinalPrice(String patientId) {
-        return this.feeRepository.findAllByPatientId(Long.parseLong(patientId)).flatMap(fee -> Mono.just(fee.getFeeAmount())).reduce(0.0 , Double::sum);
+        return this.feeRepository
+                .findAllByPatientId(Long.parseLong(patientId))
+                .flatMap(fee -> Mono.just(fee.getFeeAmount()))
+                .reduce(0.0 , Double::sum);
     }
 }

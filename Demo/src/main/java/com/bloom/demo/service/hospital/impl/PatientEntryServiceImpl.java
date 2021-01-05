@@ -38,6 +38,7 @@ public class PatientEntryServiceImpl implements PatientEntryService {
 
     @Override
     public Mono<Patient> getPatientDetailsById(String patientEntryId) {
-        return this.getPatientEntryById(patientEntryId).flatMap(patientEntry -> this.patientService.getPatientById(patientEntry.getPatientId().toString()));
+        return this.getPatientEntryById(patientEntryId)
+                .flatMap(patientEntry -> this.patientService.getPatientById(patientEntry.getPatientId().toString()));
     }
 }
