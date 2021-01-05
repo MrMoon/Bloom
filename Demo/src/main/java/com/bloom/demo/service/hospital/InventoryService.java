@@ -1,6 +1,7 @@
 package com.bloom.demo.service.hospital;
 
 import com.bloom.demo.model.hospital.Inventory;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface InventoryService {
@@ -12,4 +13,6 @@ public interface InventoryService {
     Mono<Inventory> updateInventory(Inventory inventory);
 
     Mono<Void> deleteInventory(String inventoryMangedBy);
+
+    Flux<Inventory> getInventoriesByNurseId(String nurseId);
 }

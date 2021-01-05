@@ -1,11 +1,11 @@
 package com.bloom.demo.controller.employee;
 
 import com.bloom.demo.model.employee.Nurse;
+import com.bloom.demo.model.hospital.Inventory;
 import com.bloom.demo.service.employee.NurseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -18,6 +18,11 @@ public class NurseController {
     @GetMapping("/{nurseId}")
     public Mono<Nurse> getNurseById(@PathVariable("nurseId") String nurseId) {
         return this.nurseService.getNurseById(nurseId);
+    }
+
+    @GetMapping("/inventories/{nurseId}")
+    public Flux<Inventory> getNurseInventories(@PathVariable("nurseId") String nurseId) {
+        return this.nurseService.getNurseInventories(nurseId);
     }
 
     @PostMapping("/")

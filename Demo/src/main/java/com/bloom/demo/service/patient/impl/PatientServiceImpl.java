@@ -9,6 +9,7 @@ import com.bloom.demo.service.hospital.RoomService;
 import com.bloom.demo.service.patient.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDate;
@@ -57,7 +58,7 @@ public class PatientServiceImpl implements PatientService {
                 patientRoomDetails.setPatientRoomType(room.getRoomType());
                 return this.doctorService.getDoctorById(patient.getPatientAssignedDoctorId().toString()).flatMap(doctor -> {
                     patientRoomDetails.setPatientAssignedDoctorName(doctor.getEmployeeName());
-                   return Mono.just(patientRoomDetails);
+                    return Mono.just(patientRoomDetails);
                 });
             });
         });
@@ -71,6 +72,11 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public Mono<Void> deletePatientById(String patientId) {
         return this.patientRepository.deleteById(Long.parseLong(patientId));
+    }
+
+    @Override
+    public Flux<Patient> getDoctorPatients(String doctorId) {
+        return this.patientRepository.findAllByPatientAssignedDoctorId(Long.parseLong(doctorId));
     }
 
     private int getAge(LocalDate birthDate) {

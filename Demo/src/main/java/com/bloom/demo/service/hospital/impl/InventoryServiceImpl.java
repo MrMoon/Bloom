@@ -5,6 +5,7 @@ import com.bloom.demo.repository.hospital.InventoryRepository;
 import com.bloom.demo.service.hospital.InventoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -31,5 +32,10 @@ public class InventoryServiceImpl implements InventoryService {
     @Override
     public Mono<Void> deleteInventory(String inventoryMangedBy) {
         return this.inventoryRepository.deleteById(Long.parseLong(inventoryMangedBy));
+    }
+
+    @Override
+    public Flux<Inventory> getInventoriesByNurseId(String nurseId) {
+        return this.inventoryRepository.findAllByInventoryMangedBy(Long.parseLong(nurseId));
     }
 }
