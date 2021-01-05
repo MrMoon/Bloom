@@ -1,6 +1,7 @@
 package com.bloom.demo.controller.hospital;
 
 import com.bloom.demo.model.hospital.PatientEntry;
+import com.bloom.demo.model.patient.Patient;
 import com.bloom.demo.service.hospital.PatientEntryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,11 @@ public class PatientEntryController {
     @GetMapping("/{patientEntryId}")
     public Mono<PatientEntry> getPatientEntryById(@PathVariable("patientEntryId") String patientEntryId) {
         return this.patientEntryService.getPatientEntryById(patientEntryId);
+    }
+
+    @GetMapping("/patient/{patientEntryId}")
+    public Mono<Patient> getPatientByEntryId(@PathVariable("patientEntryId") String patientEntryId) {
+        return this.patientEntryService.getPatientDetailsById(patientEntryId);
     }
 
     @PostMapping("/")

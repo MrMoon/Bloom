@@ -1,6 +1,7 @@
 package com.bloom.demo.service.hospital;
 
 import com.bloom.demo.model.hospital.PatientEntry;
+import com.bloom.demo.model.patient.Patient;
 import reactor.core.publisher.Mono;
 
 public interface PatientEntryService {
@@ -12,5 +13,7 @@ public interface PatientEntryService {
     Mono<PatientEntry> updatePatientEntry(PatientEntry patientEntry);
 
     Mono<Void> deletePatientEntryById(String patientEntryId);
+
+    Mono<Patient> getPatientDetailsById(String patientEntryId);
 
 }
