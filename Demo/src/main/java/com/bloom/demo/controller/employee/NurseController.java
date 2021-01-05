@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/nurse")
+@RequestMapping("/employee/nurse")
 public class NurseController {
 
     private final NurseService nurseService;
