@@ -11,7 +11,7 @@ public class Employee {
 
     @Id
     private Long employeeId;
-    private String employeeName , employeeJobType;
+    private String employeeName, employeeJobType;
     private Double employeeSalary;
     private LocalDate employeeDateOfBirth;
     @Transient

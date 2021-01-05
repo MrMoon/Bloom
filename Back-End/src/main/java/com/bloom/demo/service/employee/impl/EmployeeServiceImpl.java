@@ -45,8 +45,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     private JobType getEmployeeJobType(@NotNull String jobType) {
-        if(jobType.equalsIgnoreCase("doctor")) return JobType.DOCTOR;
-        else if(jobType.equalsIgnoreCase("nurse")) return JobType.NURSE;
+        if (jobType.equalsIgnoreCase("doctor")) return JobType.DOCTOR;
+        else if (jobType.equalsIgnoreCase("nurse")) return JobType.NURSE;
         return JobType.EMPLOYEE;
     }
 }

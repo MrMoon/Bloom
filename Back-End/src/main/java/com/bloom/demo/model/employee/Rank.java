@@ -2,6 +2,6 @@ package com.bloom.demo.model.employee;
 
 public enum Rank {
 
-    ONE , TWO , THREE , FOUR , FIVE
+    ONE, TWO, THREE, FOUR, FIVE
 
 }
