@@ -6,7 +6,7 @@ import com.bloom.demo.model.patient.Patient;
 import com.bloom.demo.repository.employee.DoctorRepository;
 import com.bloom.demo.service.employee.DoctorService;
 import com.bloom.demo.service.hospital.FeeService;
-import com.bloom.demo.service.patient.PatientService;
+import com.bloom.demo.service.patient.PatientJoinService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -17,7 +17,7 @@ import reactor.core.publisher.Mono;
 public class DoctorServiceImpl implements DoctorService {
 
     private final DoctorRepository doctorRepository;
-    private final PatientService patientService;
+    private final PatientJoinService patientJoinService;
     private final FeeService feeService;
 
     @Override
@@ -49,12 +49,12 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public Flux<Patient> getDoctorPatients(String doctorId) {
-        return this.patientService.getDoctorPatients(doctorId);
+        return this.patientJoinService.getDoctorPatients(doctorId);
     }
 
     @Override
     public Mono<Double> getDoctorFee(String doctorId) {
-        return this.patientService
+        return this.patientJoinService
                 .getDoctorPatients(doctorId)
                 .flatMap(patient -> this.feeService.getPatientFinalPrice(patient.getPatientId().toString()))
                 .reduce(0.0 , Double::sum);

@@ -4,8 +4,8 @@ import com.bloom.demo.model.employee.JobType;
 import com.bloom.demo.model.employee.Nurse;
 import com.bloom.demo.model.hospital.Inventory;
 import com.bloom.demo.repository.employee.NurseRepository;
+import com.bloom.demo.repository.hospital.InventoryRepository;
 import com.bloom.demo.service.employee.NurseService;
-import com.bloom.demo.service.hospital.InventoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono;
 public class NurseServiceImpl implements NurseService {
 
     private final NurseRepository nurseRepository;
-    private final InventoryService inventoryService;
+    private final InventoryRepository inventoryRepository;
 
     @Override
     public Mono<Nurse> createNurse(Nurse nurse) {
@@ -47,6 +47,6 @@ public class NurseServiceImpl implements NurseService {
 
     @Override
     public Flux<Inventory> getNurseInventories(String nurseId) {
-        return this.inventoryService.getInventoriesByNurseId(nurseId);
+        return this.inventoryRepository.findAllByInventoryMangedBy(Long.parseLong(nurseId));
     }
 }
