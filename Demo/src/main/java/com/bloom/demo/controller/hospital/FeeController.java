@@ -4,6 +4,7 @@ import com.bloom.demo.model.hospital.Fee;
 import com.bloom.demo.service.hospital.FeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -16,6 +17,16 @@ public class FeeController {
     @GetMapping("/{feeNumber}")
     public Mono<Fee> getFeeById(@PathVariable("feeNumber") String feeNumber) {
         return this.feeService.getFeeByNumber(feeNumber);
+    }
+
+    @GetMapping("/patient/price/{patientId}")
+    public Mono<Double> getAllFeesSumForPatient(@PathVariable("patientId") String patientId) {
+        return this.feeService.getPatientFinalPrice(patientId);
+    }
+
+    @GetMapping("/patient/{patientId}")
+    public Flux<Fee> getFeeByPatientId(@PathVariable("patientId") String patientId) {
+        return this.feeService.getFeeByPatientId(patientId);
     }
 
     @PostMapping("/")
