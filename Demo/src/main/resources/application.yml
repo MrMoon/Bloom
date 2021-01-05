@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: bloom-demo
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/bloom-demo
+    username: postgres
+    password: changeme
+springdoc:
+  swagger-ui:
+    path: /swagger-ui-bloom-demo.html
+    operations-sorter: method
