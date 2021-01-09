@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';   
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
@@ -13,8 +13,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { SettingsPanelComponent } from './shared/settings-panel/settings-panel.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -34,8 +32,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     NavbarComponent,
-    SidebarComponent,
-    SettingsPanelComponent,
     FooterComponent,
     DashboardComponent,
     TodoComponent,
