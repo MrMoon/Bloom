@@ -21,7 +21,6 @@ import { TodoRtlComponent } from './apps/todo-list/todo-rtl/todo-rtl.component';
 import { TodoListComponent } from './apps/todo-list/todo-list.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { ContentAnimateDirective } from './shared/directives/content-animate.directive';
-import { BloomComponent } from './bloom/bloom.component';
 import {NgSelectModule} from '@ng-select/ng-select';
 import { EmployeeComponent } from './employee/employee.component';
 import { PatientComponent } from './patient/patient.component';
@@ -29,6 +28,9 @@ import { FeeComponent } from './fee/fee.component';
 import { PatientEntryComponent } from './patient-entry/patient-entry.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { RoomComponent } from './room/room.component';
+import { PatientStatusComponent } from './patient-status/patient-status.component';
+import { DoctorPatientComponent } from './doctor-patient/doctor-patient.component';
+import { StatusComponent } from './status/status.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -45,13 +47,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     TodoRtlComponent,
     SpinnerComponent,
     ContentAnimateDirective,
-    BloomComponent,
     EmployeeComponent,
     PatientComponent,
     FeeComponent,
     PatientEntryComponent,
     InventoryComponent,
     RoomComponent,
+    PatientStatusComponent,
+    DoctorPatientComponent,
+    StatusComponent,
   ],
     imports: [
         BrowserModule,
