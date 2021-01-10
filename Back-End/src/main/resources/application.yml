@@ -2,7 +2,7 @@ spring:
   application:
     name: bloom-demo
   r2dbc:
-    url: r2dbc:postgresql://localhost:5432/bloom-demo
+    url: r2dbc:postgresql://localhost:5432/postgres
     username: postgres
     password: changeme
 springdoc:
