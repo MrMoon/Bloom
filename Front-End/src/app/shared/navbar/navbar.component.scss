@@ -8,7 +8,6 @@
   font-family: $type1;
   font-weight: normal;
   background: $navbar-bg;
-  left: $sidebar-width-lg;
   transition:left $action-transition-duration $action-transition-timing-function;
   -webkit-transition:left $action-transition-duration $action-transition-timing-function;
   -moz-transition:left $action-transition-duration $action-transition-timing-function;
@@ -16,7 +15,6 @@
 
   :host-context(.rtl) & {
     @media (min-width: 992px) {
-      right: $sidebar-width-lg;
       left: 0;
       transition:right $action-transition-duration $action-transition-timing-function;
       -webkit-transition:right $action-transition-duration $action-transition-timing-function;
@@ -37,11 +35,7 @@
     -moz-transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
     -ms-transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
     background: $navbar-bg;
-    width: $sidebar-width-lg;
     height: $navbar-height;
-    :host-context(.sidebar-dark) & {
-      background: $sidebar-bg;
-    }
 
     @media (max-width: 991px) {
       width: 55px;
@@ -51,21 +45,20 @@
       font-size: 1.5rem;
       line-height: 48px;
       margin-right: 0;
-      padding: 0rem 0rem 0rem 1.3rem;
+      padding: 0 0 0 1.3rem;
       width: 100%;
 
       &:active,
       &:focus,
       &:hover {
-        color: lighten(color(gray-dark), 10%);
+        color: lighten(color(red), 10%);
       }
 
       :host-context(.rtl) & {
-        padding: 0.25rem 1.3rem 0rem 0rem;
+        padding: 0.25rem 1.3rem 0 0;
       }
 
       img {
-        width: calc(#{$sidebar-width-lg} - 120px );
         max-width: 100%;
         height: 28px;
         margin: auto;
@@ -74,7 +67,6 @@
       &.brand-logo-mini {
         display: none;
         img {
-          width: calc(#{$sidebar-width-icon} - 50px );
           max-width: 100%;
           height: 28px;
           margin: auto;
@@ -155,7 +147,7 @@
       }
       .count-symbol {
         top: 6px;
-        right: 0px;
+        right: 0;
         width: 7px;
         height: 7px;
       }
@@ -235,17 +227,17 @@
             @extend .dropdownAnimation;
             border: none;
             @include border-radius(5px);
-            -webkit-box-shadow: 0px 3px 21px 0px rgba(0, 0, 0, 0.2);
-            -moz-box-shadow: 0px 3px 21px 0px rgba(0, 0, 0, 0.2);
-            box-shadow: 0px 3px 21px 0px rgba(0, 0, 0, 0.2);
+            -webkit-box-shadow: 0 3px 21px 0 rgba(0, 0, 0, 0.2);
+            -moz-box-shadow: 0 3px 21px 0 rgba(0, 0, 0, 0.2);
+            box-shadow: 0 3px 21px 0 rgba(0, 0, 0, 0.2);
             &.navbar-dropdown {
-              position: absolute;            
+              position: absolute;
               font-size: 0.9rem;
               margin-top: 0;
               top: 48px;
-              -webkit-box-shadow: 0px 0px 35px -3px rgb(0, 0, 0);
-              -moz-box-shadow: 0px 0px 35px -3px rgb(0, 0, 0);
-              box-shadow: 0px 0px 35px -3px rgb(0, 0, 0);
+              -webkit-box-shadow: 0 0 35px -3px rgb(0, 0, 0);
+              -moz-box-shadow: 0 0 35px -3px rgb(0, 0, 0);
+              box-shadow: 0 0 35px -3px rgb(0, 0, 0);
               :host-context(.rtl) & {
                 right: auto;
                 left: 0;
@@ -396,105 +388,8 @@
     .navbar-brand-wrapper {
       width: 55px;
       .brand-logo-mini{
-        padding-top: 0px;
+        padding-top: 0;
       }
     }
   }
 }
-
-
-:host-context(.sidebar-mini) {
-  @media (min-width: 992px) {
-    .navbar {
-      left: $sidebar-width-mini;
-      .navbar-menu-wrapper {
-        width: 100%;
-      }
-    }
-  }
-}
-
-:host-context(.sidebar-icon-only) {
-  @media(min-width: 992px) {
-    .navbar { 
-      left: $sidebar-width-icon;
-      .navbar-menu-wrapper {
-        width: 100%;
-      }
-      .navbar-brand-wrapper {
-        width: $sidebar-width-icon;
-        .brand-logo {
-          display: none;
-        }
-        .brand-logo-mini {
-          display: block;
-        }
-      }
-    }
-  }
-}
-
-:host-context(.boxed-layout) {
-  @media(min-width: 1200px) {
-    .navbar {
-      right: calc((100% - #{$boxed-container-width}) / 2);
-      left:  calc(((100% - #{$boxed-container-width}) / 2) + #{$sidebar-width-lg});
-      &.fixed-top {
-        margin: auto;
-        max-width: $boxed-container-width;
-      }
-    }
-  }
-}
-
-:host-context(.boxed-layout.sidebar-icon-only) {
-  @media(min-width: 1200px) {
-    .navbar{
-      left:  calc(((100% - #{$boxed-container-width}) / 2) + #{$sidebar-width-icon});
-    }
-  }
-}
-
-:host-context(.sidebar-icon-only.rtl) {
-  @media(min-width: 992px) {
-    .navbar{
-      left: 0;
-      right: $sidebar-width-icon;
-    }
-  }
-}
-
-:host-context(.rtl.boxed-layout) {
-  @media(min-width: 992px) {
-    .navbar {
-      right: calc(((100% - 1200px) / 2) + #{$sidebar-width-lg});
-      left: calc((100% - 1200px) / 2);
-    }
-  }
-}  
-
-:host-context(.rtl.boxed-layout.sidebar-icon-only) {
-  @media(min-width: 992px) {
-    .navbar {
-      right: calc(((100% - 1200px) / 2) + #{$sidebar-width-icon});
-    }
-  }
-}  
-
-:host-context(.rtl.sidebar-mini) {
-  @media(min-width: 992px) {
-    .navbar {
-      left: 0;
-      right: #{$sidebar-width-mini};
-    }
-  }
-} 
-
-:host-context(.rtl.sidebar-mini.sidebar-icon-only) {
-  @media(min-width: 992px) {
-    .navbar {
-      left: 0;
-      right: #{$sidebar-width-icon};
-    }
-  }
-}  
