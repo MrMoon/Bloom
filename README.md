@@ -14,4 +14,5 @@ Build using
  - Project Reactor
  - R2DBC
  - Angular
+ - RxJS
  - Postgres
