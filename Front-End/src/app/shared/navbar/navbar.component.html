@@ -1,11 +1,12 @@
-<nav class="navbar default-layout-navbar">
+<nav class="navbar default-layout-navbar p-0 fixed-top d-flex flex-row">
+  <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+    <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+  </div>
   <div class="navbar-menu-wrapper d-flex align-items-stretch">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav navbar-nav-right">
       <li class="nav-item d-none d-lg-block" ngbDropdown>
-        <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" ngbDropdownToggle translate>+ Create</a>
+        <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" ngbDropdownToggle translate>+ Create New...</a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" ngbDropdownMenu aria-labelledby="createbuttonDropdown">
-          <h6 class="p-3 mb-0" >Patient Entry</h6>
-          <div class="dropdown-divider"></div>
           <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">
               <div class="preview-icon bg-dark rounded-circle">
@@ -13,7 +14,7 @@
               </div>
             </div>
             <div class="preview-item-content">
-              <p class="preview-subject ellipsis mb-1">Fee</p>
+              <p class="preview-subject ellipsis mb-1" translate>Patient Entry</p>
             </div>
           </a>
           <div class="dropdown-divider"></div>
@@ -24,7 +25,7 @@
               </div>
             </div>
             <div class="preview-item-content">
-              <p class="preview-subject ellipsis mb-1">Employee</p>
+              <p class="preview-subject ellipsis mb-1" translate>Inventory</p>
             </div>
           </a>
           <div class="dropdown-divider"></div>
@@ -35,9 +36,10 @@
               </div>
             </div>
             <div class="preview-item-content">
-              <p class="preview-subject ellipsis mb-1">Inventory</p>
+              <p class="preview-subject ellipsis mb-1" translate>Fee</p>
             </div>
           </a>
+          <div class="dropdown-divider"></div>
           <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">
               <div class="preview-icon bg-dark rounded-circle">
@@ -45,7 +47,18 @@
               </div>
             </div>
             <div class="preview-item-content">
-              <p class="preview-subject ellipsis mb-1">Room</p>
+              <p class="preview-subject ellipsis mb-1" translate>Room</p>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-layers text-danger"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <p class="preview-subject ellipsis mb-1" translate>Employee</p>
             </div>
           </a>
         </div>
