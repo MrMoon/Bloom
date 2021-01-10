@@ -4,7 +4,7 @@
   </h3>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="javascript:;">Forms</a></li>
+      <li class="breadcrumb-item"><a href="javascript:">Forms</a></li>
       <li class="breadcrumb-item active" aria-current="page">Form elements</li>
     </ol>
   </nav>
@@ -129,7 +129,9 @@
             <label>File upload</label>
             <input type="file" name="img[]" class="file-upload-default">
             <div class="input-group col-xs-12">
-              <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+              <label>
+                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+              </label>
               <span class="input-group-append">
                 <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
               </span>
@@ -176,7 +178,7 @@
       <div class="card-body">
         <h4 class="card-title">Select size</h4>
         <p class="card-description">
-          Add classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>.                    
+          Add classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>.
         </p>
         <div class="form-group">
           <label for="exampleFormControlSelect1">Large select</label>
@@ -455,7 +457,7 @@
         <form class="form-inline">
           <label class="sr-only" for="inlineFormInputName2">Name</label>
           <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe">
-        
+
           <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
           <div class="input-group mb-2 mr-sm-2">
             <div class="input-group-prepend">
@@ -488,7 +490,9 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">First Name</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" />
+                  <label>
+                    <input type="text" class="form-control" />
+                  </label>
                 </div>
               </div>
             </div>
@@ -496,7 +500,9 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Last Name</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" />
+                  <label>
+                    <input type="text" class="form-control" />
+                  </label>
                 </div>
               </div>
             </div>
@@ -506,10 +512,13 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Gender</label>
                 <div class="col-sm-9">
-                  <select class="form-control">
-                    <option>Male</option>
-                    <option>Female</option>
-                  </select>
+                  <label>
+                    <select class="form-control">
+                      <option>Male</option>
+                      <option>Female</option>
+                      <option>Female</option>
+                    </select>
+                  </label>
                 </div>
               </div>
             </div>
@@ -517,7 +526,9 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Date of Birth</label>
                 <div class="col-sm-9">
-                  <input class="form-control" placeholder="dd/mm/yyyy"/>
+                  <label>
+                    <input class="form-control" placeholder="dd/mm/yyyy"/>
+                  </label>
                 </div>
               </div>
             </div>
@@ -527,12 +538,14 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Category</label>
                 <div class="col-sm-9">
-                  <select class="form-control">
-                    <option>Category1</option>
-                    <option>Category2</option>
-                    <option>Category3</option>
-                    <option>Category4</option>
-                  </select>
+                  <label>
+                    <select class="form-control">
+                      <option>Category1</option>
+                      <option>Category2</option>
+                      <option>Category3</option>
+                      <option>Category4</option>
+                    </select>
+                  </label>
                 </div>
               </div>
             </div>
@@ -568,7 +581,9 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Address 1</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" />
+                  <label>
+                    <input type="text" class="form-control" />
+                  </label>
                 </div>
               </div>
             </div>
@@ -576,7 +591,9 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">State</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" />
+                  <label>
+                    <input type="text" class="form-control" />
+                  </label>
                 </div>
               </div>
             </div>
@@ -586,7 +603,9 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Address 2</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" />
+                  <label>
+                    <input type="text" class="form-control" />
+                  </label>
                 </div>
               </div>
             </div>
@@ -594,7 +613,9 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Postcode</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" />
+                  <label>
+                    <input type="text" class="form-control" />
+                  </label>
                 </div>
               </div>
             </div>
@@ -604,7 +625,9 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">City</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" />
+                  <label>
+                    <input type="text" class="form-control" />
+                  </label>
                 </div>
               </div>
             </div>
@@ -612,12 +635,14 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Country</label>
                 <div class="col-sm-9">
-                  <select class="form-control">
-                    <option>America</option>
-                    <option>Italy</option>
-                    <option>Russia</option>
-                    <option>Britain</option>
-                  </select>
+                  <label>
+                    <select class="form-control">
+                      <option>America</option>
+                      <option>Italy</option>
+                      <option>Russia</option>
+                      <option>Britain</option>
+                    </select>
+                  </label>
                 </div>
               </div>
             </div>
@@ -633,7 +658,7 @@
         <h4 class="card-title">Select 2</h4>
         <div class="row row-sm mg-b-20">
           <div class="col-lg-6">
-            <p class="mg-b-10">Single Select</p> 
+            <p class="mg-b-10">Single Select</p>
             <ng-select [items]="variableName"
               bindLabel="name"
               bindValue="id"
@@ -649,7 +674,7 @@
             </ng-select>
           </div><!-- col-4 -->
         </div><!-- row -->
-  
+
       </div>
     </div>
   </div>
@@ -664,13 +689,17 @@
           <div class="col">
             <label>Basic</label>
             <div id="the-basics">
-              <input class="form-control" type="text" placeholder="States of USA" [ngbTypeahead]="typeaheadData" autocomplete="off">
+              <label>
+                <input class="form-control" type="text" placeholder="States of USA" [ngbTypeahead]="typeaheadData" autocomplete="off">
+              </label>
             </div>
           </div>
           <div class="col">
             <label>Bloodhound</label>
             <div id="bloodhound">
-              <input class="form-control" type="text" placeholder="States of USA" [ngbTypeahead]="typeaheadData" autocomplete="off">
+              <label>
+                <input class="form-control" type="text" placeholder="States of USA" [ngbTypeahead]="typeaheadData" autocomplete="off">
+              </label>
             </div>
           </div>
         </div>
