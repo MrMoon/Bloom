@@ -22,6 +22,7 @@ import { TodoRtlComponent } from './apps/todo-list/todo-rtl/todo-rtl.component';
 import { TodoListComponent } from './apps/todo-list/todo-list.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { ContentAnimateDirective } from './shared/directives/content-animate.directive';
+import { BloomComponent } from './bloom/bloom.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -39,6 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TodoRtlComponent,
     SpinnerComponent,
     ContentAnimateDirective,
+    BloomComponent,
   ],
   imports: [
     BrowserModule,
