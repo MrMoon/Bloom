@@ -1,4 +1,5 @@
 export class Room {
-  roomId: bigint;
+  roomId: number;
   roomType: string;
+  isAvailable: boolean;
 }

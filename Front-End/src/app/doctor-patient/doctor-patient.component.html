@@ -1,14 +1,34 @@
 <div class="page-header">
-  <h3 class="page-title">
-    Doctor Patient List
-  </h3>
+  <h3 class="page-title"> Doctor Patient List </h3>
 </div>
 <div class="row">
   <div class="col-md-12">
     <div class="card">
       <div class="card-body">
-        <p class="card-title">Patient List</p>
-
+        <div class="card">
+          <div class="card-body">
+            <div *ngFor="let patient of patients">
+              <div class="row">
+                <div class="col-12">
+                  <div class="preview-list">
+                    <div class="preview-item border-bottom">
+                      <div class="preview-item-content d-sm-flex flex-grow">
+                        <div class="flex-grow">
+                          <h6 class="preview-subject">{{patient.patientName}}</h6>
+                          <p class="text-muted mb-0">{{patient.patientRoomNumber}}</p>
+                        </div>
+                        <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                          <p class="text-muted">{{patient.gender}}</p>
+                          <p class="text-muted mb-0">{{patient.patientDateOfBirth}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

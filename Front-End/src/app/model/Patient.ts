@@ -1,8 +1,8 @@
 export class Patient {
-  patientId: bigint;
-  patientRoomNumber: bigint;
+  patientId: number;
+  patientRoomNumber: number;
   patientAssignedDoctorId: bigint;
-  patientName:	string;
+  patientName: string;
   patientDateOfBirth: string;
   isAdmitted: boolean;
   gender: string;
