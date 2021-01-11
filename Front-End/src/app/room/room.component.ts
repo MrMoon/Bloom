@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {RoomService} from '../room.service';
+import {Component, OnInit} from '@angular/core';
 import {Room} from '../model/Room';
 
 @Component({
@@ -10,12 +9,12 @@ import {Room} from '../model/Room';
 export class RoomComponent implements OnInit {
 
   room: Room;
-  roomId = 1;
+  rooms: Array<Room>;
 
-  constructor(private roomService: RoomService) { }
+  constructor() {
+  }
 
   ngOnInit(): void {
-    this.roomService.getRoomById(this.roomId).subscribe(value => console.log(value.roomType));
   }
 
 }
