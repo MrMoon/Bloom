@@ -1,7 +1,6 @@
 springdoc:
   swagger-ui:
-    path: /swagger-ui-bloom-demo.html
-    operations-sorter: method
+    path: /docs.html
 spring:
   application:
     name: bloom-demo
