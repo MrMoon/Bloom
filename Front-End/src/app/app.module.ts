@@ -9,7 +9,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {CarouselModule} from 'ngx-owl-carousel-o';
-import {NgxMapboxGLModule} from 'ngx-mapbox-gl';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './shared/navbar/navbar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -57,7 +56,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         ReactiveFormsModule,
         ToastrModule.forRoot(),
         CarouselModule,
-        NgxMapboxGLModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
