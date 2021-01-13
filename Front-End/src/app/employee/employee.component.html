@@ -43,12 +43,13 @@
             <div class="input-group">
               <input [(ngModel)]="employee.employeeSalary" aria-label="Amount " class="form-control"
                      name="employeeSalary"
-                     type="text">
+                     (focus)="clearSalary()"
+                     type="number">
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
               <div class="input-group-prepend">
-                <span class="input-group-text">0.00</span>
+                <span class="input-group-text">{{employee.employeeSalary}}</span>
               </div>
             </div>
           </div>
@@ -73,7 +74,9 @@
               <label class="col-form-label">Nurse Rank</label>
               <div>
                 <label>
-                  <input [(ngModel)]="nurse.nurseRank" class="form-control" name="nurseRank" type="text"/>
+                  <select [(ngModel)]="nurse.nurseRank" class="form-control" name="nurseRank">
+                    <option *ngFor="let rank of nurseRanks" [value]="rank.toUpperCase()">{{rank}}</option>
+                  </select>
                 </label>
               </div>
             </div>
@@ -81,7 +84,9 @@
               <label class="col-form-label">Nurse Shift</label>
               <div>
                 <label>
-                  <input [(ngModel)]="nurse.nurseShift" class="form-control" name="nurseShift" type="text"/>
+                  <select [(ngModel)]="nurse.nurseShift" class="form-control" name="nurseShift">
+                    <option *ngFor="let shift of nurseShifts" [value]="shift.toUpperCase()">{{shift}}</option>
+                  </select>
                 </label>
               </div>
             </div>
@@ -91,16 +96,21 @@
           <div *ngIf="isDoctor">
             <label class="col-form-label">Doctor Available Days</label>
             <div class="mg-t-20 mg-lg-t-0">
-              <ng-select [items]="doctorDaysOptions"
-                         [multiple]="true">
+              <ng-select [(ngModel)]="doctorSelectedDays"
+                         [items]="doctorDaysOptions"
+                         [multiple]="true"
+                         name="doctorDays">
               </ng-select>
             </div>
           </div>
         </div>
-        <button class="btn btn-outline-success btn-icon-text" type="submit">
-          <i class="mdi mdi-file-check btn-icon-prepend"></i>
-          Submit
-        </button>
+        <hr/>
+        <div>
+          <button class="btn btn-outline-success btn-icon-text" type="submit">
+            <i class="mdi mdi-file-check btn-icon-prepend"></i>
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   </div>

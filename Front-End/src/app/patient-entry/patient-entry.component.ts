@@ -19,6 +19,8 @@ export class PatientEntryComponent implements OnInit {
   }
 
   onPatientEntrySubmit = () => {
+    console.log(this.patientEntry);
+    this.patientEntry.patientEntryType = this.patientEntry.patientEntryType.toUpperCase();
     if (this.patientEntry.patientEntryId !== undefined) {
       this.patientEntryService.updatePatientEntry(this.patientEntry).subscribe(updatedPatientEntry => {
         this.patientEntry = updatedPatientEntry;

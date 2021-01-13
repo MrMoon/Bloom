@@ -10,7 +10,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class InventoryComponent implements OnInit {
 
-  inventory: Inventory;
+  inventory: Inventory = new Inventory();
   flag = false;
 
   constructor(private inventoryService: InventoryService, private toast: ToastrService) {

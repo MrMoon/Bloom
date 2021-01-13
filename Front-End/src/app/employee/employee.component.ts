@@ -18,10 +18,13 @@ export class EmployeeComponent implements OnInit {
   doctor: Doctor = new Doctor();
   nurse: Nurse = new Nurse();
   doctorDaysOptions = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+  nurseRanks = ['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE'];
+  nurseShifts = ['A', 'B', 'C'];
   firstName = '';
   lastName = '';
   isDoctor = false;
   isNurse = false;
+  flag = false;
   doctorSelectedDays: Array<string>;
 
   constructor(private doctorService: DoctorService, private nurseService: NurseService,
@@ -41,9 +44,11 @@ export class EmployeeComponent implements OnInit {
 
   onSubmitEmployee = () => {
     this.toast.clear();
+    this.employee.employeeName = this.firstName + ' ' + this.lastName;
     if (this.isDoctor) {
+      this.doctor.jobType = 'Doctor'.toUpperCase();
       this.doctor.employeeId = this.employee.employeeId;
-      this.doctor.employeeJobType = this.employee.employeeJobType;
+      this.doctor.jobType = this.employee.jobType;
       this.doctor.employeeName = this.employee.employeeName;
       this.doctor.employeeDateOfBirth = this.employee.employeeDateOfBirth;
       this.doctor.employeeSalary = this.employee.employeeSalary;
@@ -66,8 +71,9 @@ export class EmployeeComponent implements OnInit {
         }, error => this.toast.error('Doctor Creation Failed\n' + error, 'Doctor Creation Status'));
       }
     } else if (this.isNurse) {
+      this.nurse.jobType = 'Nurse'.toUpperCase();
       this.nurse.employeeId = this.employee.employeeId;
-      this.nurse.employeeJobType = this.employee.employeeJobType;
+      this.nurse.jobType = this.employee.jobType;
       this.nurse.employeeName = this.employee.employeeName;
       this.nurse.employeeDateOfBirth = this.employee.employeeDateOfBirth;
       this.nurse.employeeSalary = this.employee.employeeSalary;
@@ -75,26 +81,34 @@ export class EmployeeComponent implements OnInit {
         this.nurseService.updateNurse(this.nurse).subscribe(updatedNurse => {
           this.nurse = updatedNurse;
           this.toast.success('Nurse Updated Successfully', 'Nurse ' + this.employee.employeeId + ' Status');
-        }, error => this.toast.error('Nurse Update Failed\n' + error, 'Nurse Update Status'))
+        }, error => this.toast.error('Nurse Update Failed\n' + error.value, 'Nurse Update Status'))
       } else {
         this.nurseService.createNurse(this.nurse).subscribe(savedNurse => {
           this.nurse = savedNurse;
           this.toast.success('Nurse Created Successfully', 'Nurse ' + this.employee.employeeId + ' Status');
-        }, error => this.toast.error('Nurse Creation Failed\n' + error, 'Nurse Creation Status'));
+        }, error => this.toast.error('Nurse Creation Failed\n' + error.value, 'Nurse Creation Status'));
       }
     } else {
+      this.employee.jobType = 'Employee'.toUpperCase();
       this.employee.employeeName = this.firstName + ' ' + this.lastName;
       if (this.employee.employeeId !== undefined) {
         this.employeeService.updateEmployee(this.employee).subscribe(updatedEmployee => {
           this.employee = updatedEmployee;
           this.toast.success('Employee Updated Successfully', 'Employee ' + this.employee.employeeId + ' Status');
-        }, error => this.toast.error('Employee Update Failed\n' + error, 'Employee Update Status'));
+        }, error => this.toast.error('Employee Update Failed\n' + error.value, 'Employee Update Status'));
       } else {
         this.employeeService.createEmployee(this.employee).subscribe(savedEmployee => {
           this.employee = savedEmployee;
           this.toast.success('Employee Created Successfully', 'Employee ' + this.employee.employeeId + ' Status');
-        }, error => this.toast.error('Employee Creation Failed\n' + error, 'Employee Creation Status'));
+        }, error => this.toast.error('Employee Creation Failed\n' + error.value, 'Employee Creation Status'));
       }
+    }
+  }
+
+  clearSalary = () => {
+    if (!this.flag) {
+      this.employee.employeeSalary = 0.0;
+      this.flag = true;
     }
   }
 }
