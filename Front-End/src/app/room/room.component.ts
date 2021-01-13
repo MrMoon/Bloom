@@ -22,7 +22,6 @@ export class RoomComponent implements OnInit {
 
   onSubmitRoom(): void {
     this.toast.clear();
-    console.log(this.room.roomId);
     if (this.room.roomId !== undefined) {
       this.roomService.updateRoom(this.room).subscribe(updatedRoom => {
         this.room = updatedRoom;
