@@ -22,7 +22,7 @@ export class PatientComponent implements OnInit {
 
   }
 
-  onSubmitPatient(): void {
+  onSubmitPatient = () => {
     this.toast.clear();
     this.patient.patientName = this.firstName + ' ' + this.lastName;
     this.patient.gender = this.patient.gender.toUpperCase();
