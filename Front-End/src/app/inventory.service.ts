@@ -13,19 +13,13 @@ export class InventoryService {
   constructor(private http: HttpClient) {
   }
 
-  getInventoryById(nurseId: number, inventoryId: number): Observable<Inventory> {
-    return this.http.get<Inventory>(this.inventoryURL + inventoryId + '/' + nurseId);
-  }
+  getInventoryById = (nurseId: number, inventoryId: number): Observable<Inventory> =>
+    this.http.get<Inventory>(this.inventoryURL + inventoryId + '/' + nurseId);
 
-  createInventory(inventory: Inventory): Observable<Inventory> {
-    return this.http.post<Inventory>(this.inventoryURL, inventory);
-  }
+  createInventory = (inventory: Inventory): Observable<Inventory> => this.http.post<Inventory>(this.inventoryURL, inventory);
 
-  updateInventory(inventory: Inventory): Observable<Inventory> {
-    return this.http.put<Inventory>(this.inventoryURL, inventory);
-  }
+  updateInventory = (inventory: Inventory): Observable<Inventory> => this.http.put<Inventory>(this.inventoryURL, inventory);
 
-  deleteInventory(nurseId: number, inventoryId: number): Observable<HttpResponse<any>> {
-    return this.http.delete(this.inventoryURL + inventoryId + '/' + nurseId, {observe: 'response'});
-  }
+  deleteInventory = (nurseId: number, inventoryId: number): Observable<HttpResponse<any>> =>
+    this.http.delete(this.inventoryURL + inventoryId + '/' + nurseId, {observe: 'response'});
 }

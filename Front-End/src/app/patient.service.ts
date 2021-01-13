@@ -15,28 +15,19 @@ export class PatientService {
   constructor(private http: HttpClient) {
   }
 
-  getPatientById(patientId: number): Observable<Patient> {
-    return this.http.get<Patient>(this.patientURL + patientId);
-  }
+  getAll = (): Observable<Array<Patient>> => this.http.get<Array<Patient>>(this.patientURL);
 
-  createPatient(patient: Patient): Observable<Patient> {
-    return this.http.post<Patient>(this.patientURL, patient);
-  }
+  getPatientById = (patientId: number): Observable<Patient> => this.http.get<Patient>(this.patientURL + patientId);
 
-  updatePatient(patient: Patient): Observable<Patient> {
-    return this.http.put<Patient>(this.patientURL, patient);
-  }
+  createPatient = (patient: Patient): Observable<Patient> => this.http.post<Patient>(this.patientURL, patient);
 
-  deletePatient(patientId: number): Observable<HttpResponse<any>> {
-    return this.http.delete(this.patientURL + patientId, {observe: 'response'});
-  }
+  updatePatient = (patient: Patient): Observable<Patient> => this.http.put<Patient>(this.patientURL, patient);
 
+  deletePatient = (patientId: number): Observable<HttpResponse<any>> =>
+    this.http.delete(this.patientURL + patientId, {observe: 'response'});
 
-  getPatientRoomDetails(patientId: number): Observable<PatientRoomDetails> {
-    return this.http.get<PatientRoomDetails>(this.patientURL + 'room/' + patientId);
-  }
+  getPatientRoomDetails = (patientId: number): Observable<PatientRoomDetails> =>
+    this.http.get<PatientRoomDetails>(this.patientURL + 'room/' + patientId);
 
-  getPatientDoctor(patientId: number): Observable<Doctor> {
-    return this.http.get<Doctor>(this.patientURL + 'doctor/' + patientId);
-  }
+  getPatientDoctor = (patientId: number): Observable<Doctor> => this.http.get<Doctor>(this.patientURL + 'doctor/' + patientId);
 }

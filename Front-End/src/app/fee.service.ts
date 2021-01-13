@@ -13,27 +13,17 @@ export class FeeService {
   constructor(private http: HttpClient) {
   }
 
-  getFeeByNumber(feeNumber: number): Observable<Fee> {
-    return this.http.get<Fee>(this.feeURL + feeNumber);
-  }
+  getFeeByNumber = (feeNumber: number): Observable<Fee> => this.http.get<Fee>(this.feeURL + feeNumber);
 
-  createFee(fee: Fee): Observable<Fee> {
-    return this.http.post<Fee>(this.feeURL, fee);
-  }
+  createFee = (fee: Fee): Observable<Fee> => this.http.post<Fee>(this.feeURL, fee);
 
-  updateFee(fee: Fee): Observable<Fee> {
-    return this.http.put<Fee>(this.feeURL, fee);
-  }
+  updateFee = (fee: Fee): Observable<Fee> => this.http.put<Fee>(this.feeURL, fee);
 
-  deleteFee(feeNumber: number): Observable<HttpResponse<any>> {
-    return this.http.delete(this.feeURL + feeNumber, {observe: 'response'});
-  }
+  deleteFee = (feeNumber: number): Observable<HttpResponse<any>> => this.http.delete(this.feeURL + feeNumber, {observe: 'response'});
 
-  getPatientFeesByPatientId(patientId: number): Observable<Array<Fee>> {
-    return this.http.get<Array<Fee>>(this.feeURL + 'patient/' + patientId);
-  }
+  getPatientFeesByPatientId = (patientId: number): Observable<Array<Fee>> =>
+    this.http.get<Array<Fee>>(this.feeURL + 'patient/' + patientId);
 
-  getPatientFeesAmountByPatientId(patientId: number): Observable<number> {
-    return this.http.get<number>(this.feeURL + 'patient/price/' + patientId);
-  }
+  getPatientFeesAmountByPatientId = (patientId: number): Observable<number> =>
+    this.http.get<number>(this.feeURL + 'patient/price/' + patientId);
 }

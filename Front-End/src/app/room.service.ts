@@ -13,19 +13,12 @@ export class RoomService {
   constructor(private http: HttpClient) {
   }
 
-  getRoomById(roomNumber: number): Observable<Room> {
-    return this.http.get<Room>(this.roomURL + roomNumber);
-  }
+  getRoomById = (roomNumber: number): Observable<Room> => this.http.get<Room>(this.roomURL + roomNumber);
 
-  createRoom(room: Room): Observable<Room> {
-    return this.http.post<Room>(this.roomURL, room);
-  }
+  createRoom = (room: Room): Observable<Room> => this.http.post<Room>(this.roomURL, room);
 
-  updateRoom(room: Room): Observable<Room> {
-    return this.http.put<Room>(this.roomURL, room);
-  }
+  updateRoom = (room: Room): Observable<Room> => this.http.put<Room>(this.roomURL, room);
 
-  deleteRoom(roomId: number): Observable<HttpResponse<any>> {
-    return this.http.delete(this.roomURL + roomId, {observe: 'response'});
-  }
+  deleteRoom = (roomId: number): Observable<HttpResponse<any>> =>
+    this.http.delete(this.roomURL + roomId, {observe: 'response'});
 }
