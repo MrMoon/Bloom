@@ -12,7 +12,7 @@ export class DoctorPatientServiceService {
   constructor(private http: HttpClient) {
   }
 
-  getDoctorPatientById(doctroId: number) {
-    return this.http.get<Patient>(this.doctorPatientURL + doctroId);
+  getDoctorPatientById(doctorId: number) {
+    return this.http.get<Patient>(this.doctorPatientURL + doctorId);
   }
 }
