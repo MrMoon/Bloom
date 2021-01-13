@@ -18,4 +18,8 @@ public interface FeeService {
 
     Mono<Double> getPatientFinalPrice(String patientId);
 
+    Mono<Double> getAllFees();
+
+    Flux<Fee> getAll();
+
 }

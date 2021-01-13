@@ -49,4 +49,9 @@ public class NurseServiceImpl implements NurseService {
     public Flux<Inventory> getNurseInventories(String nurseId) {
         return this.inventoryRepository.findAllByInventoryMangedBy(Long.parseLong(nurseId));
     }
+
+    @Override
+    public Flux<Nurse> getAll() {
+        return this.nurseRepository.findAll();
+    }
 }

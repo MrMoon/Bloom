@@ -22,6 +22,11 @@ public class DoctorController {
     private final DoctorService doctorService;
     private final DoctorAvailableTimesService doctorAvailableTimesService;
 
+    @GetMapping("/")
+    public Flux<Doctor> getAll() {
+        return this.doctorService.getAll();
+    }
+
     @GetMapping("/{doctorId}")
     public Mono<Doctor> getDoctorById(@PathVariable("doctorId") String doctorId) {
         return this.doctorService.getDoctorById(doctorId);

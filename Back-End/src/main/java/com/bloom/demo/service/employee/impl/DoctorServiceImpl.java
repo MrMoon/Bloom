@@ -69,4 +69,9 @@ public class DoctorServiceImpl implements DoctorService {
                 .findAllByDoctorId(Long.parseLong(doctorId))
                 .distinct();
     }
+
+    @Override
+    public Flux<Doctor> getAll() {
+        return this.doctorRepository.findAll();
+    }
 }

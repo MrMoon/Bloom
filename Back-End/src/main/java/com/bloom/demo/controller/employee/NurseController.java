@@ -16,6 +16,11 @@ public class NurseController {
 
     private final NurseService nurseService;
 
+    @GetMapping("/")
+    public Flux<Nurse> getAll() {
+        return this.nurseService.getAll();
+    }
+
     @GetMapping("/{nurseId}")
     public Mono<Nurse> getNurseById(@PathVariable("nurseId") String nurseId) {
         return this.nurseService.getNurseById(nurseId);

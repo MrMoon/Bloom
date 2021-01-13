@@ -4,6 +4,7 @@ import com.bloom.demo.model.employee.Employee;
 import com.bloom.demo.service.employee.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -13,6 +14,11 @@ import reactor.core.publisher.Mono;
 public class EmployeeController {
 
     private final EmployeeService employeeService;
+
+    @GetMapping("/")
+    public Flux<Employee> getAll() {
+        return this.employeeService.getAll();
+    }
 
     @GetMapping("/{employeeId}")
     public Mono<Employee> getEmployeeById(@PathVariable("employeeId") String employeeId) {
