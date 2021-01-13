@@ -96,4 +96,9 @@ public class PatientEntryServiceImpl implements PatientEntryService {
                                             return Mono.just(patientRoomDetails);
                                         }))));
     }
+
+    @Override
+    public Flux<PatientEntry> getAll() {
+        return this.patientEntryRepository.findAll();
+    }
 }

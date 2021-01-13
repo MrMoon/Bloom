@@ -17,4 +17,5 @@ public interface NurseService {
 
     Flux<Inventory> getNurseInventories(String nurseId);
 
+    Flux<Nurse> getAll();
 }

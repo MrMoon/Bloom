@@ -7,6 +7,7 @@ import com.bloom.demo.service.employee.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -42,6 +43,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Mono<Void> deleteEmployeeById(String employeeId) {
         return this.employeeRepository.deleteById(Long.parseLong(employeeId));
+    }
+
+    @Override
+    public Flux<Employee> getAll() {
+        return this.employeeRepository.findAll();
     }
 
     private JobType getEmployeeJobType(@NotNull String jobType) {

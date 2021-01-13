@@ -15,6 +15,16 @@ public class FeeController {
 
     private final FeeService feeService;
 
+    @GetMapping("/")
+    public Flux<Fee> getAll() {
+        return this.feeService.getAll();
+    }
+
+    @GetMapping("/price")
+    public Mono<Double> getSumAll() {
+        return this.feeService.getAllFees();
+    }
+
     @GetMapping("/{feeNumber}")
     public Mono<Fee> getFeeById(@PathVariable("feeNumber") String feeNumber) {
         return this.feeService.getFeeByNumber(feeNumber);

@@ -22,4 +22,6 @@ public interface DoctorService {
 
     Flux<DoctorAvailableTimes> getDoctorAvailableTimes(String doctorId);
 
+    Flux<Doctor> getAll();
+
 }

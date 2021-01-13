@@ -5,6 +5,7 @@ import com.bloom.demo.repository.hospital.RoomRepository;
 import com.bloom.demo.service.hospital.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -31,5 +32,10 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public Mono<Void> deleteRoomById(String roomNumber) {
         return this.roomRepository.deleteById(Long.parseLong(roomNumber));
+    }
+
+    @Override
+    public Flux<Room> getALl() {
+        return this.roomRepository.findAll();
     }
 }

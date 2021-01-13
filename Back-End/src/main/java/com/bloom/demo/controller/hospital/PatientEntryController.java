@@ -5,6 +5,7 @@ import com.bloom.demo.model.patient.Patient;
 import com.bloom.demo.service.hospital.PatientEntryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -14,6 +15,11 @@ import reactor.core.publisher.Mono;
 public class PatientEntryController {
 
     private final PatientEntryService patientEntryService;
+
+    @GetMapping("/")
+    public Flux<PatientEntry> getAll() {
+        return this.patientEntryService.getAll();
+    }
 
     @GetMapping("/{patientEntryId}")
     public Mono<PatientEntry> getPatientEntryById(@PathVariable("patientEntryId") String patientEntryId) {

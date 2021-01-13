@@ -4,6 +4,7 @@ import com.bloom.demo.model.hospital.Room;
 import com.bloom.demo.service.hospital.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -13,6 +14,11 @@ import reactor.core.publisher.Mono;
 public class RoomController {
 
     private final RoomService roomService;
+
+    @GetMapping("/")
+    public Flux<Room> getAll() {
+        return this.roomService.getALl();
+    }
 
     @GetMapping("/{roomNumber}")
     public Mono<Room> getRoomByNumber(@PathVariable("roomNumber") String roomNumber) {

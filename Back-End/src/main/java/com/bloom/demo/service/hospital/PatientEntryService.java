@@ -25,4 +25,5 @@ public interface PatientEntryService {
 
     Mono<PatientRoomDetails> getPatientRoomDetails(String patientId);
 
+    Flux<PatientEntry> getAll();
 }
