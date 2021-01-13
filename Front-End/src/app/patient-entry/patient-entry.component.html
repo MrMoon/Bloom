@@ -2,17 +2,30 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">Patient Entry Form</h4>
-      <form class="form-sample">
+      <form (ngSubmit)="onPatientEntrySubmit()" class="form-sample">
         <p class="card-description">
           Entry info
         </p>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group row">
+              <label class="col-form-label">Patient Entry ID ( if you know it )</label>
+              <div class="col-sm-9">
+                <label>
+                  <input [(ngModel)]="patientEntry.patientEntryType" class="form-control" name="patientEntryId"
+                         type="text"/>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
               <label class="col-sm-3 col-form-label">Patient ID</label>
               <div class="col-sm-9">
                 <label>
-                  <input type="text" class="form-control" />
+                  <input [(ngModel)]="patientEntry.patientId" class="form-control" name="patientId" type="text"/>
                 </label>
               </div>
             </div>
@@ -22,22 +35,43 @@
               <label class="col-sm-3 col-form-label">Entry Type</label>
               <div class="col-sm-9">
                 <label>
-                  <select class="form-control">
-                    <option>Emergency</option>
-                    <option>OPD</option>
-                    <option>Routine check up</option>
+                  <select [(ngModel)]="patientEntry.patientEntryType" class="form-control" name="entryType">
+                    <option selected="selected" value="Emergency">Emergency</option>
+                    <option value="OPD">OPD</option>
+                    <option value="ROUTINE_CHECK_UP">Routine check up</option>
                   </select>
                 </label>
               </div>
             </div>
           </div>
         </div>
-        <div class="template-demo mt-2">
-          <button class="btn btn-success btn-icon-text" type="button">
-            <i class="mdi mdi-file-check "></i>
-            Admit
-          </button>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Doctor ID</label>
+              <div class="col-sm-9">
+                <label>
+                  <input [(ngModel)]="patientEntry.patientDoctorId" class="form-control" name="doctorID" type="text"/>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Room Number</label>
+              <div class="col-sm-9">
+                <label>
+                  <input [(ngModel)]="patientEntry.patientRoomNumber" class="form-control" name="roomNumber"
+                         type="text"/>
+                </label>
+              </div>
+            </div>
+          </div>
         </div>
+        <button class="btn btn-outline-success btn-icon-text" type="submit">
+          <i class="mdi mdi-file-check btn-icon-prepend"></i>
+          Admit
+        </button>
       </form>
     </div>
   </div>
