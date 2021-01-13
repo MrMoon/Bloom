@@ -8,11 +8,11 @@ public interface InventoryService {
 
     Mono<Inventory> createInventory(Inventory inventory);
 
-    Mono<Inventory> getInventory(String inventoryMangedBy);
+    Mono<Inventory> getInventory(String inventoryId, String inventoryMangedBy);
 
     Mono<Inventory> updateInventory(Inventory inventory);
 
-    Mono<Void> deleteInventory(String inventoryMangedBy);
+    Mono<Void> deleteInventory(String inventoryId, String inventoryMangedBy);
 
     Flux<Inventory> getInventoriesByNurseId(String nurseId);
 }

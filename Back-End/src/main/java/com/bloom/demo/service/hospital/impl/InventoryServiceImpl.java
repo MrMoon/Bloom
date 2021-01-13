@@ -26,8 +26,8 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
-    public Mono<Inventory> getInventory(String inventoryMangedBy) {
-        return this.inventoryRepository.findById(Long.parseLong(inventoryMangedBy));
+    public Mono<Inventory> getInventory(String inventoryId, String inventoryMangedBy) {
+        return this.inventoryRepository.findByInventoryIdAndInventoryMangedBy(Long.parseLong(inventoryId), Long.parseLong(inventoryMangedBy));
     }
 
     @Override
@@ -36,8 +36,8 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
-    public Mono<Void> deleteInventory(String inventoryMangedBy) {
-        return this.inventoryRepository.deleteById(Long.parseLong(inventoryMangedBy));
+    public Mono<Void> deleteInventory(String inventoryId, String inventoryMangedBy) {
+        return this.inventoryRepository.deleteByInventoryIdAndInventoryMangedBy(Long.parseLong(inventoryId), Long.parseLong(inventoryMangedBy));
     }
 
     @Override
