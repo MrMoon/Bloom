@@ -2,21 +2,31 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">Add a Room</h4>
-      <form class="form-sample">
+      <form (ngSubmit)="onSubmitRoom()" class="form-sample">
         <p class="card-description">New Room info </p>
         <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Room ID ( if you know it) </label>
+              <div class="col-sm-9">
+                <label>
+                  <input [(ngModel)]="room.roomId" class="form-control" name="roomId" type="text"/>
+                </label>
+              </div>
+            </div>
+          </div>
           <div class="col-md-6">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Room Type</label>
               <div class="col-sm-9">
                 <label>
-                  <input type="text" class="form-control" />
+                  <input [(ngModel)]="room.roomType" class="form-control" name="roomType" type="text"/>
                 </label>
               </div>
             </div>
           </div>
         </div>
-        <button class="btn btn-outline-success btn-fw" type="button">Add room</button>
+        <button class="btn btn-outline-success btn-fw" type="submit">Add room</button>
       </form>
     </div>
   </div>
@@ -43,9 +53,10 @@
               </td>
               <td>{{room.roomType}}</td>
               <td>
-                <div
-                  [ngClass]="((room.isAvailable) === true) ? 'badge badge-outline-success' : 'badge badge-outline-danger'">
-                  {{(room.isAvailable === true) ? "Available" : "Not Available"}}
+                <div>
+                  <button (click)="deleteRoom(room.roomId)" class="btn btn-outline-danger btn-fw" type="button">Delete
+                    Room
+                  </button>
                 </div>
               </td>
             </tr>

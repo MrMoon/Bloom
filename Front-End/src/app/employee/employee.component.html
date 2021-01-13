@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">Employee Form</h4>
-      <form class="form-sample">
+      <form (ngSubmit)="onSubmitEmployee()" class="form-sample">
         <p class="card-description">Personal info </p>
         <div class="row">
           <div class="col-md-6">
@@ -10,7 +10,7 @@
               <label class="col-sm-3 col-form-label">First Name</label>
               <div class="col-sm-9">
                 <label>
-                  <input type="text" class="form-control"/>
+                  <input [(ngModel)]="firstName" class="form-control" name="firstName" type="text"/>
                 </label>
               </div>
             </div>
@@ -20,7 +20,7 @@
               <label class="col-sm-3 col-form-label">Last Name</label>
               <div class="col-sm-9">
                 <label>
-                  <input type="text" class="form-control" />
+                  <input [(ngModel)]="lastName" class="form-control" name="lastName" type="text"/>
                 </label>
               </div>
             </div>
@@ -29,28 +29,84 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Date of Birth</label>
+              <label class="col-sm-3 col-form-label">Date
+                of Birth</label>
               <div class="col-sm-9">
                 <label>
-                  <input class="form-control" placeholder="yyyy-mm-dd"/>
+                  <input [(ngModel)]="employee.employeeDateOfBirth" class="form-control" name="employeeDateOfBirth"
+                         placeholder="yyyy-mm-dd"/>
                 </label>
               </div>
             </div>
           </div>
           <div class="form-group">
             <div class="input-group">
-              <input type="text" class="form-control" aria-label="Amount ">
+              <input [(ngModel)]="employee.employeeSalary" aria-label="Amount " class="form-control"
+                     name="employeeSalary"
+                     (focus)="clearSalary()"
+                     type="number">
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
               <div class="input-group-prepend">
-                <span class="input-group-text">0.00</span>
+                <span class="input-group-text">{{employee.employeeSalary}}</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="template-demo mt-2">
-          <button class="btn btn-outline-primary btn-icon-text" type="button">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Job Type</label>
+              <div class="col-sm-9">
+                <label>
+                  <input (input)="onJobTypeChange()" [(ngModel)]="employee.employeeJobType" class="form-control"
+                         name="employeeJobType"
+                         type="text"/>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div *ngIf="isNurse">
+            <div>
+              <label class="col-form-label">Nurse Rank</label>
+              <div>
+                <label>
+                  <select [(ngModel)]="nurse.nurseRank" class="form-control" name="nurseRank">
+                    <option *ngFor="let rank of nurseRanks" [value]="rank.toUpperCase()">{{rank}}</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            <div>
+              <label class="col-form-label">Nurse Shift</label>
+              <div>
+                <label>
+                  <select [(ngModel)]="nurse.nurseShift" class="form-control" name="nurseShift">
+                    <option *ngFor="let shift of nurseShifts" [value]="shift.toUpperCase()">{{shift}}</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div *ngIf="isDoctor">
+            <label class="col-form-label">Doctor Available Days</label>
+            <div class="mg-t-20 mg-lg-t-0">
+              <ng-select [(ngModel)]="doctorSelectedDays"
+                         [items]="doctorDaysOptions"
+                         [multiple]="true"
+                         name="doctorDays">
+              </ng-select>
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <div>
+          <button class="btn btn-outline-success btn-icon-text" type="submit">
             <i class="mdi mdi-file-check btn-icon-prepend"></i>
             Submit
           </button>

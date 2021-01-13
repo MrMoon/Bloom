@@ -1,5 +1,7 @@
 export class PatientEntry {
-  patientEntryId: bigint;
-  patientId: bigint;
+  patientEntryId: number;
+  patientId: number;
   patientEntryType: string;
+  patientDoctorId: number;
+  patientRoomNumber: number;
 }

@@ -8,15 +8,15 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/hospital/inventory")
 public class InventoryController {
 
     private final InventoryService inventoryService;
 
-    @GetMapping("/{inventoryMangedBy}")
-    public Mono<Inventory> getInventory(@PathVariable("inventoryMangedBy") String inventoryMangedBy) {
-        return this.inventoryService.getInventory(inventoryMangedBy);
+    @GetMapping("/{inventoryId}/{inventoryMangedBy}")
+    public Mono<Inventory> getInventory(@PathVariable("inventoryId") String inventoryId, @PathVariable("inventoryMangedBy") String inventoryMangedBy) {
+        return this.inventoryService.getInventory(inventoryId, inventoryMangedBy);
     }
 
     @PostMapping("/")
@@ -29,8 +29,8 @@ public class InventoryController {
         return inventoryMono.flatMap(this.inventoryService::updateInventory);
     }
 
-    @DeleteMapping("/{inventoryMangedBy}")
-    public Mono<Void> deleteInventory(@PathVariable("inventoryMangedBy") String inventoryManagedBy) {
-        return this.inventoryService.deleteInventory(inventoryManagedBy);
+    @DeleteMapping("/{inventoryId}/{inventoryMangedBy}")
+    public Mono<Void> deleteInventory(@PathVariable("inventoryId") String inventoryId, @PathVariable("inventoryMangedBy") String inventoryManagedBy) {
+        return this.inventoryService.deleteInventory(inventoryId, inventoryManagedBy);
     }
 }

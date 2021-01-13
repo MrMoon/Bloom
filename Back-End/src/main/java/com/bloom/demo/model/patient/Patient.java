@@ -11,7 +11,6 @@ public class Patient {
 
     @Id
     private Long patientId;
-    private Long patientRoomNumber, patientAssignedDoctorId;
     private String patientName;
     private LocalDate patientDateOfBirth;
     private Boolean isAdmitted;

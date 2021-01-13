@@ -1,7 +1,7 @@
 export class Inventory {
-  inventoryId: bigint;
-  inventoryMangedBy: bigint;
-  inventoryAmount: bigint;
-  inventoryRecord:	string;
-  inventoryRecordType:	string;
+  inventoryId: number;
+  inventoryMangedBy: number;
+  inventoryAmount: number;
+  inventoryRecord: string;
+  inventoryRecordType: string;
 }

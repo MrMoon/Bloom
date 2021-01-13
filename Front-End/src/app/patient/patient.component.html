@@ -2,15 +2,27 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">Patient Form</h4>
-      <form class="form-sample">
+      <form (ngSubmit)="onSubmitPatient()" class="form-sample">
         <p class="card-description">Personal info</p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Patient ID ( if you know it) </label>
+              <div class="col-sm-9">
+                <label>
+                  <input [(ngModel)]="patient.patientId" class="form-control" name="patientId" type="text"/>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">First Name</label>
               <div class="col-sm-9">
                 <label>
-                  <input type="text" class="form-control" />
+                  <input [(ngModel)]="firstName" class="form-control" name="firstName" type="text"/>
                 </label>
               </div>
             </div>
@@ -20,7 +32,7 @@
               <label class="col-sm-3 col-form-label">Last Name</label>
               <div class="col-sm-9">
                 <label>
-                  <input type="text" class="form-control" />
+                  <input [(ngModel)]="lastName" class="form-control" name="lastName" type="text"/>
                 </label>
               </div>
             </div>
@@ -32,14 +44,15 @@
               <label class="col-sm-3 col-form-label">Date of Birth</label>
               <div class="col-sm-9">
                 <label>
-                  <input class="form-control" placeholder="yyyy-mm-dd"/>
+                  <input [(ngModel)]="patient.patientDateOfBirth" class="form-control" name="patientDateOfBirth"
+                         placeholder="yyyy-mm-dd"/>
                 </label>
               </div>
             </div>
           </div>
           <div class="form-check form-check-success">
             <label class="form-check-label">
-              <input type="checkbox" class="form-check-input">
+              <input [(ngModel)]="patient.isAdmitted" class="form-check-input" name="isAdmitted" type="checkbox">
               Admitted
               <i class="input-helper"></i>
             </label>
@@ -50,7 +63,7 @@
             <label class="col-sm-3 col-form-label">Gender</label>
             <div class="col-sm-9">
               <label>
-                <select class="form-control">
+                <select [(ngModel)]="patient.gender" class="form-control" name="gender">
                   <option>Male</option>
                   <option>Female</option>
                 </select>
@@ -58,12 +71,10 @@
             </div>
           </div>
         </div>
-        <div class="template-demo mt-2">
-          <button class="btn btn-outline-primary btn-icon-text" type="button">
-            <i class="mdi mdi-file-check btn-icon-prepend"></i>
-            Submit
-          </button>
-        </div>
+        <button class="btn btn-outline-success btn-icon-text" type="submit">
+          <i class="mdi mdi-file-check btn-icon-prepend"></i>
+          Submit
+        </button>
       </form>
     </div>
   </div>

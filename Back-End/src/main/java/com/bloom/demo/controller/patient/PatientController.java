@@ -4,15 +4,21 @@ import com.bloom.demo.model.patient.Patient;
 import com.bloom.demo.service.patient.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/patient")
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequiredArgsConstructor
 public class PatientController {
 
     private final PatientService patientService;
+
+    @GetMapping("/")
+    public Flux<Patient> getAllPatients() {
+        return this.patientService.getAll();
+    }
 
     @GetMapping("/{patientId}")
     public Mono<Patient> getPatientById(@PathVariable("patientId") String patientId) {
