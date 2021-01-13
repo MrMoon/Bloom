@@ -1,6 +1,8 @@
 package com.bloom.demo.service.hospital.impl;
 
+import com.bloom.demo.model.employee.Rank;
 import com.bloom.demo.model.hospital.Inventory;
+import com.bloom.demo.repository.employee.NurseRepository;
 import com.bloom.demo.repository.hospital.InventoryRepository;
 import com.bloom.demo.service.hospital.InventoryService;
 import lombok.RequiredArgsConstructor;
@@ -13,10 +15,14 @@ import reactor.core.publisher.Mono;
 public class InventoryServiceImpl implements InventoryService {
 
     private final InventoryRepository inventoryRepository;
+    private final NurseRepository nurseRepository;
 
     @Override
     public Mono<Inventory> createInventory(Inventory inventory) {
-        return this.inventoryRepository.save(inventory);
+        return this.nurseRepository.findById(inventory.getInventoryMangedBy()).flatMap(nurse -> {
+            if (nurse.getNurseRank().equals(Rank.ONE)) return this.inventoryRepository.save(inventory);
+            else return Mono.empty();
+        });
     }
 
     @Override
