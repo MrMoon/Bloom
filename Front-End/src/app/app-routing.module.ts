@@ -11,7 +11,7 @@ import {PatientStatusComponent} from './patient-status/patient-status.component'
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/patient', pathMatch: 'full'},
+  {path: '', redirectTo: '/inventory', pathMatch: 'full'},
   {path: 'room', component: RoomComponent},
   {path: 'doctor-patient', component: DoctorPatientComponent},
   {path: 'employee', component: EmployeeComponent},

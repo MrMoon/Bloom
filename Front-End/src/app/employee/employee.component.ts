@@ -58,12 +58,12 @@ export class EmployeeComponent implements OnInit {
         this.doctorService.updateDoctor(this.doctor).subscribe(updatedDoctor => {
           this.doctor = updatedDoctor;
           this.toast.success('Doctor Updated Successfully', 'Doctor ' + this.employee.employeeId + ' Status');
-        }, error => this.toast.error('Doctor Update Failed\n' + error, 'Doctor Update Status'))
+        }, error => this.toast.error('Doctor Update Failed\n' + error, 'Doctor Update Status'));
       } else {
         this.doctorService.createDoctor(this.doctor).subscribe(savedDoctor => {
           this.doctor = savedDoctor;
           this.toast.success('Doctor Created Successfully', 'Doctor ' + this.employee.employeeId + ' Status');
-        }, error => this.toast.error('Doctor Created Failed\n' + error, 'Doctor Creation Status'))
+        }, error => this.toast.error('Doctor Creation Failed\n' + error, 'Doctor Creation Status'));
       }
     } else if (this.isNurse) {
       this.nurse.employeeId = this.employee.employeeId;
@@ -80,7 +80,7 @@ export class EmployeeComponent implements OnInit {
         this.nurseService.createNurse(this.nurse).subscribe(savedNurse => {
           this.nurse = savedNurse;
           this.toast.success('Nurse Created Successfully', 'Nurse ' + this.employee.employeeId + ' Status');
-        }, error => this.toast.error('Nurse Created Failed\n' + error, 'Nurse Creation Status'))
+        }, error => this.toast.error('Nurse Creation Failed\n' + error, 'Nurse Creation Status'));
       }
     } else {
       this.employee.employeeName = this.firstName + ' ' + this.lastName;
@@ -93,7 +93,7 @@ export class EmployeeComponent implements OnInit {
         this.employeeService.createEmployee(this.employee).subscribe(savedEmployee => {
           this.employee = savedEmployee;
           this.toast.success('Employee Created Successfully', 'Employee ' + this.employee.employeeId + ' Status');
-        }, error => this.toast.error('Employee Created Failed\n' + error, 'Employee Creation Status'));
+        }, error => this.toast.error('Employee Creation Failed\n' + error, 'Employee Creation Status'));
       }
     }
   }
