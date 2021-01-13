@@ -4,5 +4,4 @@ export class Employee {
   employeeJobType: string;
   employeeSalary: number;
   employeeDateOfBirth: string;
-  jobType: string;
 }
