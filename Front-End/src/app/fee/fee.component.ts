@@ -34,7 +34,7 @@ export class FeeComponent implements OnInit {
     }
   }
 
-  clearAmount() {
+  clearAmount = () => {
     if (!this.flag) {
       this.fee.feeAmount = undefined;
       this.flag = true;
