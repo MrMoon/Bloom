@@ -38,4 +38,9 @@ public class RoomServiceImpl implements RoomService {
     public Flux<Room> getALl() {
         return this.roomRepository.findAll();
     }
+
+    @Override
+    public Mono<Long> getRoomTypesNumber(String roomType) {
+        return this.roomRepository.countByRoomType(roomType);
+    }
 }

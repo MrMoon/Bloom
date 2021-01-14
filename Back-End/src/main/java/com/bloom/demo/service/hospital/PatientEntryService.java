@@ -2,6 +2,7 @@ package com.bloom.demo.service.hospital;
 
 import com.bloom.demo.model.employee.Doctor;
 import com.bloom.demo.model.hospital.PatientEntry;
+import com.bloom.demo.model.hospital.PatientEntryType;
 import com.bloom.demo.model.patient.Patient;
 import com.bloom.demo.model.patient.PatientRoomDetails;
 import reactor.core.publisher.Flux;
@@ -26,4 +27,6 @@ public interface PatientEntryService {
     Mono<PatientRoomDetails> getPatientRoomDetails(String patientId);
 
     Flux<PatientEntry> getAll();
+
+    Mono<Long> getNumberOfEntriesType(PatientEntryType patientEntryType);
 }

@@ -4,6 +4,7 @@ import com.bloom.demo.model.hospital.Inventory;
 import com.bloom.demo.service.hospital.InventoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -17,6 +18,16 @@ public class InventoryController {
     @GetMapping("/{inventoryId}/{inventoryMangedBy}")
     public Mono<Inventory> getInventory(@PathVariable("inventoryId") String inventoryId, @PathVariable("inventoryMangedBy") String inventoryMangedBy) {
         return this.inventoryService.getInventory(inventoryId, inventoryMangedBy);
+    }
+
+    @GetMapping("/{nurseId}")
+    public Flux<Inventory> getNurseInventories(@PathVariable("nurseId") String nurseId) {
+        return this.inventoryService.getInventoriesByNurseId(nurseId);
+    }
+
+    @GetMapping("/number/{recordType}")
+    public Mono<Long> getInventoryRecordTypeNumbers(@PathVariable("recordType") String recordType) {
+        return this.inventoryService.getNumberByRecordType(recordType);
     }
 
     @PostMapping("/")

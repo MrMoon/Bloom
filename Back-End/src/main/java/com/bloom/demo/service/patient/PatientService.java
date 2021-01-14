@@ -1,5 +1,6 @@
 package com.bloom.demo.service.patient;
 
+import com.bloom.demo.model.StatNumbers;
 import com.bloom.demo.model.patient.Patient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -15,5 +16,11 @@ public interface PatientService {
     Mono<Void> deletePatientById(String patientId);
 
     Flux<Patient> getAll();
+
+    Mono<StatNumbers> getNumbersAdmitted();
+
+    Mono<StatNumbers> getNumbersGender();
+
+    Mono<StatNumbers> getNumberOfTeens();
 
 }

@@ -1,6 +1,7 @@
 package com.bloom.demo.controller.hospital;
 
 import com.bloom.demo.model.hospital.Fee;
+import com.bloom.demo.model.hospital.FeePatient;
 import com.bloom.demo.service.hospital.FeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +17,18 @@ public class FeeController {
     private final FeeService feeService;
 
     @GetMapping("/")
-    public Flux<Fee> getAll() {
+    public Flux<FeePatient> getAll() {
         return this.feeService.getAll();
     }
 
     @GetMapping("/price")
     public Mono<Double> getSumAll() {
         return this.feeService.getAllFees();
+    }
+
+    @GetMapping("/yesterday")
+    public Mono<Double> getSumYesterday() {
+        return this.feeService.getTotalBeforeDay();
     }
 
     @GetMapping("/{feeNumber}")

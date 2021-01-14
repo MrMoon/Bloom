@@ -15,4 +15,6 @@ public interface InventoryRepository extends ReactiveCrudRepository<Inventory, L
 
     Mono<Void> deleteByInventoryIdAndInventoryMangedBy(Long inventoryId, Long nurseId);
 
+    Flux<Inventory> findAllByInventoryRecordType(String inventoryRecordType);
+
 }

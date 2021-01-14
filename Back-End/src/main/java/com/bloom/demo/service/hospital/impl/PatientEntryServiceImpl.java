@@ -2,6 +2,7 @@ package com.bloom.demo.service.hospital.impl;
 
 import com.bloom.demo.model.employee.Doctor;
 import com.bloom.demo.model.hospital.PatientEntry;
+import com.bloom.demo.model.hospital.PatientEntryType;
 import com.bloom.demo.model.patient.Patient;
 import com.bloom.demo.model.patient.PatientRoomDetails;
 import com.bloom.demo.repository.employee.DoctorRepository;
@@ -100,5 +101,10 @@ public class PatientEntryServiceImpl implements PatientEntryService {
     @Override
     public Flux<PatientEntry> getAll() {
         return this.patientEntryRepository.findAll();
+    }
+
+    @Override
+    public Mono<Long> getNumberOfEntriesType(PatientEntryType patientEntryType) {
+        return this.patientEntryRepository.countAllByPatientEntryType(patientEntryType);
     }
 }

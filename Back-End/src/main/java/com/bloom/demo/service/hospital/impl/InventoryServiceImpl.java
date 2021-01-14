@@ -44,4 +44,11 @@ public class InventoryServiceImpl implements InventoryService {
     public Flux<Inventory> getInventoriesByNurseId(String nurseId) {
         return this.inventoryRepository.findAllByInventoryMangedBy(Long.parseLong(nurseId));
     }
+
+    @Override
+    public Mono<Long> getNumberByRecordType(String recordType) {
+        return this.inventoryRepository
+                .findAllByInventoryRecordType(recordType)
+                .count();
+    }
 }

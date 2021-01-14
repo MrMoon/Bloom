@@ -16,4 +16,6 @@ public interface RoomService {
 
     Flux<Room> getALl();
 
+    Mono<Long> getRoomTypesNumber(String roomType);
+
 }

@@ -20,6 +20,11 @@ public class RoomController {
         return this.roomService.getALl();
     }
 
+    @GetMapping("/number/{roomType}")
+    public Mono<Long> getNumberByType(@PathVariable("roomType") String roomType) {
+        return this.roomService.getRoomTypesNumber(roomType);
+    }
+
     @GetMapping("/{roomNumber}")
     public Mono<Room> getRoomByNumber(@PathVariable("roomNumber") String roomNumber) {
         return this.roomService.getRoomByNumber(roomNumber);

@@ -1,5 +1,7 @@
 package com.bloom.demo.service.patient.impl;
 
+import com.bloom.demo.model.StatNumbers;
+import com.bloom.demo.model.patient.Gender;
 import com.bloom.demo.model.patient.Patient;
 import com.bloom.demo.repository.patient.PatientRepository;
 import com.bloom.demo.service.patient.PatientService;
@@ -55,6 +57,46 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public Flux<Patient> getAll() {
         return this.patientRepository.findAll();
+    }
+
+    @Override
+    public Mono<StatNumbers> getNumbersAdmitted() {
+        return this.patientRepository
+                .countPatientsByIsAdmitted(true)
+                .flatMap(numberOfAdmitted -> this.patientRepository
+                        .count()
+                        .flatMap(numberOfPatient -> {
+                            StatNumbers statNumbers = new StatNumbers();
+                            statNumbers.setX(numberOfAdmitted);
+                            statNumbers.setTotal(numberOfPatient);
+                            return Mono.just(statNumbers);
+                        }));
+    }
+
+    @Override
+    public Mono<StatNumbers> getNumbersGender() {
+        return this.patientRepository
+                .countPatientsByGender(Gender.FEMALE)
+                .flatMap(numberOfFemales -> this.patientRepository
+                        .count().flatMap(numberOfPatients -> {
+                            StatNumbers statNumbers = new StatNumbers();
+                            statNumbers.setTotal(numberOfPatients);
+                            statNumbers.setX(numberOfFemales);
+                            return Mono.just(statNumbers);
+                        }));
+    }
+
+    @Override
+    public Mono<StatNumbers> getNumberOfTeens() {
+        return this.patientRepository
+                .countDistinctByPatientDateOfBirthAfter(LocalDate.now().minusYears(18))
+                .flatMap(numberOfTeens -> this.patientRepository
+                        .count().flatMap(numberOfPatients -> {
+                            StatNumbers statNumbers = new StatNumbers();
+                            statNumbers.setTotal(numberOfPatients);
+                            statNumbers.setX(numberOfTeens);
+                            return Mono.just(statNumbers);
+                        }));
     }
 
     private int getAge(LocalDate birthDate) {
