@@ -11,6 +11,7 @@ import {ToastrService} from 'ngx-toastr';
 export class FeeComponent implements OnInit {
 
   fee: Fee = new Fee();
+  fees: Array<Fee>;
   flag = false;
 
   constructor(private feeService: FeeService, private toast: ToastrService) {
@@ -18,6 +19,7 @@ export class FeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.fee.feeAmount = 0.00;
+    this.feeService.getAll().subscribe(value => this.fees = value);
   }
 
   onSubmitFee = () => {

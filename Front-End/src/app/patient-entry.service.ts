@@ -28,4 +28,6 @@ export class PatientEntryService {
 
   getPatientByEntryId = (patientEntryId: number): Observable<Patient> =>
     this.http.get<Patient>(this.patientEntryURL + 'patient/' + patientEntryId);
+
+  getAll = (): Observable<Array<PatientEntry>> => this.http.get<Array<PatientEntry>>(this.patientEntryURL);
 }

@@ -11,11 +11,13 @@ import {ToastrService} from 'ngx-toastr';
 export class PatientEntryComponent implements OnInit {
 
   patientEntry: PatientEntry = new PatientEntry();
+  patientEntries: Array<PatientEntry>;
 
   constructor(private patientEntryService: PatientEntryService, private toast: ToastrService) {
   }
 
   ngOnInit(): void {
+    this.patientEntryService.getAll().subscribe(value => this.patientEntries = value);
   }
 
   onPatientEntrySubmit = () => {

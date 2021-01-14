@@ -14,6 +14,7 @@ import {NurseService} from '../nurse.service';
 })
 export class EmployeeComponent implements OnInit {
 
+  employees: Array<Employee>;
   employee: Employee = new Employee();
   doctor: Doctor = new Doctor();
   nurse: Nurse = new Nurse();
@@ -32,15 +33,8 @@ export class EmployeeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getEmp();
   }
-
-  onJobTypeChange = () => {
-    const job = this.employee.employeeJobType.toUpperCase();
-    this.isDoctor = job === 'DOCTOR';
-    this.isNurse = job === 'NURSE';
-  }
-
-  replaceAt = (temp: string, index: number, replacement) => temp.substr(0, index) + replacement + temp.substr(index + replacement.length);
 
   onSubmitEmployee = () => {
     this.toast.clear();
@@ -103,6 +97,19 @@ export class EmployeeComponent implements OnInit {
         }, error => this.toast.error('Employee Creation Failed\n' + error.value, 'Employee Creation Status'));
       }
     }
+    this.getEmp();
+  }
+
+  onJobTypeChange = () => {
+    const job = this.employee.employeeJobType.toUpperCase();
+    this.isDoctor = job === 'DOCTOR';
+    this.isNurse = job === 'NURSE';
+  }
+
+  replaceAt = (temp: string, index: number, replacement) => temp.substr(0, index) + replacement + temp.substr(index + replacement.length);
+
+  private getEmp() {
+    this.employeeService.getAll().subscribe(value => this.employees = value);
   }
 
   clearSalary = () => {

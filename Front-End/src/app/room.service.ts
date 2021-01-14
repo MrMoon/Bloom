@@ -21,4 +21,6 @@ export class RoomService {
 
   deleteRoom = (roomId: number): Observable<HttpResponse<any>> =>
     this.http.delete(this.roomURL + roomId, {observe: 'response'});
+
+  getAll = (): Observable<Array<Room>> => this.http.get<Array<Room>>(this.roomURL);
 }

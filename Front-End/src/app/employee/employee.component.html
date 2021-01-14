@@ -10,7 +10,7 @@
               <label class="col-sm-3 col-form-label">First Name</label>
               <div class="col-sm-9">
                 <label>
-                  <input [(ngModel)]="firstName" class="form-control" name="firstName" type="text"/>
+                  <input [(ngModel)]="firstName" class="form-control" name="firstName" required type="text"/>
                 </label>
               </div>
             </div>
@@ -20,7 +20,7 @@
               <label class="col-sm-3 col-form-label">Last Name</label>
               <div class="col-sm-9">
                 <label>
-                  <input [(ngModel)]="lastName" class="form-control" name="lastName" type="text"/>
+                  <input [(ngModel)]="lastName" class="form-control" name="lastName" required type="text"/>
                 </label>
               </div>
             </div>
@@ -34,7 +34,7 @@
               <div class="col-sm-9">
                 <label>
                   <input [(ngModel)]="employee.employeeDateOfBirth" class="form-control" name="employeeDateOfBirth"
-                         placeholder="yyyy-mm-dd"/>
+                         placeholder="yyyy-mm-dd" required/>
                 </label>
               </div>
             </div>
@@ -44,6 +44,7 @@
               <input [(ngModel)]="employee.employeeSalary" aria-label="Amount " class="form-control"
                      name="employeeSalary"
                      (focus)="clearSalary()"
+                     required
                      type="number">
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
@@ -62,6 +63,7 @@
                 <label>
                   <input (input)="onJobTypeChange()" [(ngModel)]="employee.employeeJobType" class="form-control"
                          name="employeeJobType"
+                         required
                          type="text"/>
                 </label>
               </div>
@@ -74,7 +76,7 @@
               <label class="col-form-label">Nurse Rank</label>
               <div>
                 <label>
-                  <select [(ngModel)]="nurse.nurseRank" class="form-control" name="nurseRank">
+                  <select [(ngModel)]="nurse.nurseRank" class="form-control" name="nurseRank" required>
                     <option *ngFor="let rank of nurseRanks" [value]="rank.toUpperCase()">{{rank}}</option>
                   </select>
                 </label>
@@ -84,7 +86,7 @@
               <label class="col-form-label">Nurse Shift</label>
               <div>
                 <label>
-                  <select [(ngModel)]="nurse.nurseShift" class="form-control" name="nurseShift">
+                  <select [(ngModel)]="nurse.nurseShift" class="form-control" name="nurseShift" required>
                     <option *ngFor="let shift of nurseShifts" [value]="shift.toUpperCase()">{{shift}}</option>
                   </select>
                 </label>
@@ -97,6 +99,7 @@
             <label class="col-form-label">Doctor Available Days</label>
             <div class="mg-t-20 mg-lg-t-0">
               <ng-select [(ngModel)]="doctorSelectedDays"
+                         required
                          [items]="doctorDaysOptions"
                          [multiple]="true"
                          name="doctorDays">
@@ -115,3 +118,37 @@
     </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="card">
+          <div class="card-body">
+            <div *ngFor="let emp of employees">
+              <div class="row">
+                <div class="col-12">
+                  <div class="preview-list">
+                    <div class="preview-item border-bottom">
+                      <div class="preview-item-content d-sm-flex flex-grow">
+                        <div class="flex-grow">
+                          <h6 class="preview-subject">{{emp.employeeName}}</h6>
+                          <p class="text-muted mb-0">{{emp.employeeId}}</p>
+                        </div>
+                        <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                          <p class="text-muted">{{emp.employeeSalary}} $</p>
+                          <p class="text-muted mb-0">{{emp.employeeJobType}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

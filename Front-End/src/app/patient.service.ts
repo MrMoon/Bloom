@@ -30,4 +30,5 @@ export class PatientService {
     this.http.get<PatientRoomDetails>(this.patientURL + 'room/' + patientId);
 
   getPatientDoctor = (patientId: number): Observable<Doctor> => this.http.get<Doctor>(this.patientURL + 'doctor/' + patientId);
+
 }

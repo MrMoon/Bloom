@@ -20,4 +20,6 @@ export class EmployeeService {
   updateEmployee = (employee: Employee): Observable<Employee> => this.http.put<Employee>(this.employeeURL, employee);
 
   deleteEmployee = (employeeId: number): Observable<HttpResponse<any>> => this.http.delete(this.employeeURL + employeeId, {observe: 'response'});
+
+  getAll = (): Observable<Array<Employee>> => this.http.get<Array<Employee>>(this.employeeURL);
 }
