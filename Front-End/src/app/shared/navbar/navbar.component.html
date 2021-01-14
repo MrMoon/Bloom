@@ -1,13 +1,23 @@
 <nav class="navbar default-layout-navbar p-0 fixed-top d-flex flex-row">
-  <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-    <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
-  </div>
   <div class="navbar-menu-wrapper d-flex align-items-stretch">
     <ul class="navbar-nav navbar-nav-right">
       <li class="nav-item d-none d-lg-block" ngbDropdown>
-        <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" ngbDropdownToggle translate>+ Create New...</a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" ngbDropdownMenu aria-labelledby="createbuttonDropdown">
-          <a class="dropdown-item preview-item">
+        <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" ngbDropdownToggle translate>+
+          Create </a>
+        <div aria-labelledby="createbuttonDropdown"
+             class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+             ngbDropdownMenu>
+          <a [routerLink]="'patient'" class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-file-outline text-primary"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <p class="preview-subject ellipsis mb-1" translate>Patient</p>
+            </div>
+          </a>
+          <a [routerLink]="'patient-entry'" class="dropdown-item preview-item">
             <div class="preview-thumbnail">
               <div class="preview-icon bg-dark rounded-circle">
                 <i class="mdi mdi-file-outline text-primary"></i>
@@ -18,18 +28,18 @@
             </div>
           </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item">
+          <a [routerLink]="'employee'" class="dropdown-item preview-item">
             <div class="preview-thumbnail">
               <div class="preview-icon bg-dark rounded-circle">
                 <i class="mdi mdi-web text-info"></i>
               </div>
             </div>
             <div class="preview-item-content">
-              <p class="preview-subject ellipsis mb-1" translate>Inventory</p>
+              <p class="preview-subject ellipsis mb-1" translate>Employee</p>
             </div>
           </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item">
+          <a [routerLink]="'fee'" class="dropdown-item preview-item">
             <div class="preview-thumbnail">
               <div class="preview-icon bg-dark rounded-circle">
                 <i class="mdi mdi-layers text-danger"></i>
@@ -39,29 +49,12 @@
               <p class="preview-subject ellipsis mb-1" translate>Fee</p>
             </div>
           </a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item">
-            <div class="preview-thumbnail">
-              <div class="preview-icon bg-dark rounded-circle">
-                <i class="mdi mdi-layers text-danger"></i>
-              </div>
-            </div>
-            <div class="preview-item-content">
-              <p class="preview-subject ellipsis mb-1" translate>Room</p>
-            </div>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item">
-            <div class="preview-thumbnail">
-              <div class="preview-icon bg-dark rounded-circle">
-                <i class="mdi mdi-layers text-danger"></i>
-              </div>
-            </div>
-            <div class="preview-item-content">
-              <p class="preview-subject ellipsis mb-1" translate>Employee</p>
-            </div>
-          </a>
         </div>
+      </li>
+      <li class="nav-item nav-settings d-none d-lg-block">
+        <a [routerLink]="'dashboard'" class="nav-link">
+          <i class="mdi mdi-view-grid"></i>
+        </a>
       </li>
     </ul>
   </div>
