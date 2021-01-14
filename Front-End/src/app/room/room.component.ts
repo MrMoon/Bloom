@@ -17,7 +17,7 @@ export class RoomComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.roomService.getAll().subscribe(value => this.rooms = value);
   }
 
   onSubmitRoom(): void {

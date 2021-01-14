@@ -10,7 +10,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class DoctorPatientComponent implements OnInit {
 
-  patients: Array<Patient> = new Array<Patient>();
+  patients: Array<Patient>;
   doctorId = '';
 
   constructor(private doctorService: DoctorService, private toast: ToastrService) {
@@ -20,13 +20,17 @@ export class DoctorPatientComponent implements OnInit {
   }
 
   getDoctorPatients = () => {
-    if (this.doctorId === undefined || this.doctorId.length === 0) {
-      this.toast.error('Please Enter a valid ID', 'Doctor ID');
-      return;
+    this.toast.clear();
+    if (this.doctorId === undefined || this.doctorId.length === 0) this.toast.error('Please Enter a valid ID', 'Doctor ID');
+    else {
+      this.doctorService
+        .getDoctorPatients(this.doctorId)
+        .subscribe(doctorPatients => {
+            this.patients = doctorPatients;
+            if (this.patients.length === 0)
+              this.toast.info('Doctor with ID (' + this.doctorId + ') have no patients', 'Doctor Patients Status');
+          },
+          error => this.toast.error('Something went wrong' + error.status, 'Getting Doctor Patient Failed!!!'));
     }
-    this.doctorService
-      .getDoctorPatients(this.doctorId)
-      .subscribe(doctorPatients => this.patients = doctorPatients,
-        error => this.toast.error('Something went wrong ' + error, 'Getting Doctor Patient Failed!!!'));
   }
 }

@@ -22,4 +22,6 @@ export class InventoryService {
 
   deleteInventory = (nurseId: number, inventoryId: number): Observable<HttpResponse<any>> =>
     this.http.delete(this.inventoryURL + inventoryId + '/' + nurseId, {observe: 'response'});
+
+  getAll = (): Observable<Array<Inventory>> => this.http.get<Array<Inventory>>(this.inventoryURL);
 }

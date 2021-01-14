@@ -10,6 +10,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class InventoryComponent implements OnInit {
 
+  inventories: Array<Inventory>;
   inventory: Inventory = new Inventory();
   flag = false;
 
@@ -18,6 +19,7 @@ export class InventoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.inventoryService.getAll().subscribe(value => this.inventories = value);
   }
 
   clearAmount = () => {

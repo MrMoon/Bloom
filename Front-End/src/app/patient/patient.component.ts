@@ -11,6 +11,7 @@ import {ToastrService} from 'ngx-toastr';
 export class PatientComponent implements OnInit {
 
   patient: Patient = new Patient();
+  patients: Array<Patient>;
   firstName = '';
   lastName = '';
 
@@ -19,7 +20,7 @@ export class PatientComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.patientService.getAll().subscribe(value => this.patients = value);
   }
 
   onSubmitPatient = () => {
