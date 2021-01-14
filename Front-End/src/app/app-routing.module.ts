@@ -8,9 +8,11 @@ import {InventoryComponent} from './inventory/inventory.component';
 import {PatientComponent} from './patient/patient.component';
 import {PatientEntryComponent} from './patient-entry/patient-entry.component';
 import {PatientStatusComponent} from './patient-status/patient-status.component';
+import {StatusComponent} from './status/status.component';
 
 
 const routes: Routes = [
+  {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {path: 'room', component: RoomComponent},
   {path: 'doctor-patient', component: DoctorPatientComponent},
   {path: 'employee', component: EmployeeComponent},
@@ -19,7 +21,8 @@ const routes: Routes = [
   {path: 'patient', component: PatientComponent},
   {path: 'patient-entry', component: PatientEntryComponent},
   {path: 'patient-status', component: PatientStatusComponent},
-  {path: 'room', component: RoomComponent}
+  {path: 'room', component: RoomComponent},
+  {path: 'dashboard', component: StatusComponent}
 ];
 
 @NgModule({
