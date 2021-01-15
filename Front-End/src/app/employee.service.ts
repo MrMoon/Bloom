@@ -22,4 +22,8 @@ export class EmployeeService {
   deleteEmployee = (employeeId: number): Observable<HttpResponse<any>> => this.http.delete(this.employeeURL + employeeId, {observe: 'response'});
 
   getAll = (): Observable<Array<Employee>> => this.http.get<Array<Employee>>(this.employeeURL);
+
+  getSalaryFreq = (): Observable<Array<StatNumbers>> => this.http.get<Array<StatNumbers>>(this.employeeURL + 'freq/salary');
+
+  getJobTypeFreq = (): Observable<Array<StatNumbersString>> => this.http.get<Array<StatNumbersString>>(this.employeeURL + 'freq/jobtype');
 }
