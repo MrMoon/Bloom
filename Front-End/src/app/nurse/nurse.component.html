@@ -1,0 +1,61 @@
+<div class="page-header">
+  <h3 class="page-title"> Doctor Patient List </h3>
+</div>
+
+<div class="col-12 grid-margin">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Enter Doctor ID to get Patients</h4>
+      <form (ngSubmit)="getNurseDetails()" class="form-sample">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Doctor ID</label>
+              <div class="col-sm-9">
+                <label>
+                  <input [(ngModel)]="nurseId" class="form-control" name="nurseId" type="text"/>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-outline-success btn-fw" type="submit">Get Nurse Details</button>
+      </form>
+    </div>
+  </div>
+</div>
+<!--
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="card">
+          <div class="card-body">
+            <div *ngFor="let patient of patients">
+              <div class="row">
+                <div class="col-12">
+                  <div class="preview-list">
+                    <div class="preview-item border-bottom">
+                      <div class="preview-item-content d-sm-flex flex-grow">
+                        <div class="flex-grow">
+                          <h6 class="preview-subject">{{patient.patientName}}</h6>
+                          <p class="text-muted mb-0">{{patient.patientId}}</p>
+                        </div>
+                        <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                          <p class="text-muted">{{patient.gender}}</p>
+                          <p class="text-muted mb-0">{{patient.patientDateOfBirth}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->

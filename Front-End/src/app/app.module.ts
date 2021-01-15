@@ -26,6 +26,7 @@ import {PatientStatusComponent} from './patient-status/patient-status.component'
 import {DoctorPatientComponent} from './doctor-patient/doctor-patient.component';
 import {StatusComponent} from './status/status.component';
 import {ChartsModule, ThemeService} from 'ng2-charts';
+import {NurseComponent} from './nurse/nurse.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/');
@@ -46,6 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PatientStatusComponent,
     DoctorPatientComponent,
     StatusComponent,
+    NurseComponent,
   ],
   imports: [
     BrowserModule,
