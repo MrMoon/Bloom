@@ -24,4 +24,6 @@ export class InventoryService {
     this.http.delete(this.inventoryURL + inventoryId + '/' + nurseId, {observe: 'response'});
 
   getAll = (): Observable<Array<Inventory>> => this.http.get<Array<Inventory>>(this.inventoryURL);
+
+  getNumberOfBloodUnits = (): Observable<number> => this.http.get<number>(this.inventoryURL + 'number/BLOOD');
 }

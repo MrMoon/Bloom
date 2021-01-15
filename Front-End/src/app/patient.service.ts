@@ -31,4 +31,10 @@ export class PatientService {
 
   getPatientDoctor = (patientId: number): Observable<Doctor> => this.http.get<Doctor>(this.patientURL + 'doctor/' + patientId);
 
+  getNumberTeensAnalysis = (): Observable<StatNumbers> => this.http.get<StatNumbers>(this.patientURL + 'teens');
+
+  getNumberOfAdmitted = (): Observable<StatNumbers> => this.http.get<StatNumbers>(this.patientURL + 'numbers');
+
+  getGenderAnalysis = (): Observable<StatNumbers> => this.http.get<StatNumbers>(this.patientURL + 'gender');
+
 }

@@ -25,6 +25,7 @@ import {RoomComponent} from './room/room.component';
 import {PatientStatusComponent} from './patient-status/patient-status.component';
 import {DoctorPatientComponent} from './doctor-patient/doctor-patient.component';
 import {StatusComponent} from './status/status.component';
+import {ChartsModule, ThemeService} from 'ng2-charts';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/');
@@ -46,25 +47,28 @@ export function HttpLoaderFactory(http: HttpClient) {
     DoctorPatientComponent,
     StatusComponent,
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        AppRoutingModule,
-        NgbModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        ReactiveFormsModule,
-        ToastrModule.forRoot(),
-        CarouselModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        }),
-        NgSelectModule
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
+    CarouselModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    NgSelectModule,
+    ChartsModule
+  ],
+  providers: [ThemeService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

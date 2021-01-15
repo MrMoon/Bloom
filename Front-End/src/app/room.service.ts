@@ -26,6 +26,5 @@ export class RoomService {
 
   getLuxuryRoomsNumber = (): Observable<number> => this.http.get<number>(this.roomURL + 'number/Luxury');
 
-
   getAnalysis = (): Observable<StatNumbers> => this.http.get<StatNumbers>(this.roomURL + 'analysis');
 }
