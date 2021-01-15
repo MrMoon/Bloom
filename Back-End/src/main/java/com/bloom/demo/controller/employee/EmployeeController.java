@@ -1,5 +1,7 @@
 package com.bloom.demo.controller.employee;
 
+import com.bloom.demo.model.StatNumbers;
+import com.bloom.demo.model.StatNumbersString;
 import com.bloom.demo.model.employee.Employee;
 import com.bloom.demo.service.employee.EmployeeService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,16 @@ public class EmployeeController {
     @GetMapping("/")
     public Flux<Employee> getAll() {
         return this.employeeService.getAll();
+    }
+
+    @GetMapping("/freq/salary")
+    public Flux<StatNumbers> getSalariesFrequencies() {
+        return this.employeeService.getSalariesFrequencies();
+    }
+
+    @GetMapping("/freq/jobtype")
+    public Flux<StatNumbersString> getJobTypeFrequencies() {
+        return this.employeeService.getJobTypeFrequencies();
     }
 
     @GetMapping("/{employeeId}")
