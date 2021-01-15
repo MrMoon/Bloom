@@ -11,7 +11,7 @@ import {ToastrService} from 'ngx-toastr';
 export class FeeComponent implements OnInit {
 
   fee: Fee = new Fee();
-  fees: Array<Fee>;
+  fees: Array<FeePatient>;
   flag = false;
 
   constructor(private feeService: FeeService, private toast: ToastrService) {

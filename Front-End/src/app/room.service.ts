@@ -23,4 +23,9 @@ export class RoomService {
     this.http.delete(this.roomURL + roomId, {observe: 'response'});
 
   getAll = (): Observable<Array<Room>> => this.http.get<Array<Room>>(this.roomURL);
+
+  getLuxuryRoomsNumber = (): Observable<number> => this.http.get<number>(this.roomURL + 'number/Luxury');
+
+
+  getAnalysis = (): Observable<StatNumbers> => this.http.get<StatNumbers>(this.roomURL + 'analysis');
 }

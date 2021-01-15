@@ -37,10 +37,11 @@ export class RoomComponent implements OnInit {
   }
 
   deleteRoom(roomId: number): void {
+    console.log(roomId);
     this.roomService.deleteRoom(roomId).subscribe(value => {
       this.toast.clear();
-      if (value.status === 200) this.toast.error('Room Deleted Successfully', 'Room ' + roomId + ' Status');
-    })
+      if (value.status === 200) this.toast.success('Room Deleted Successfully', 'Room ' + roomId + ' Status');
+    }, error => this.toast.error('Something went wrong, error ' + error.toString(), 'Room ' + roomId + ' Status'));
   }
 
 }
