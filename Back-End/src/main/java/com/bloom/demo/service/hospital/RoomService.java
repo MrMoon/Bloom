@@ -1,5 +1,6 @@
 package com.bloom.demo.service.hospital;
 
+import com.bloom.demo.model.StatNumbers;
 import com.bloom.demo.model.hospital.Room;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -17,5 +18,7 @@ public interface RoomService {
     Flux<Room> getALl();
 
     Mono<Long> getRoomTypesNumber(String roomType);
+
+    Mono<StatNumbers> getNumberOfRoomsWithStatus();
 
 }

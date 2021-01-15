@@ -1,5 +1,6 @@
 package com.bloom.demo.controller.hospital;
 
+import com.bloom.demo.model.StatNumbers;
 import com.bloom.demo.model.hospital.Fee;
 import com.bloom.demo.model.hospital.FeePatient;
 import com.bloom.demo.service.hospital.FeeService;
@@ -28,7 +29,12 @@ public class FeeController {
 
     @GetMapping("/yesterday")
     public Mono<Double> getSumYesterday() {
-        return this.feeService.getTotalBeforeDay();
+        return this.feeService.getTotalBeforeToday();
+    }
+
+    @GetMapping("/analysis")
+    public Mono<StatNumbers> getAnalysis() {
+        return this.feeService.getFeeAnalysis();
     }
 
     @GetMapping("/{feeNumber}")

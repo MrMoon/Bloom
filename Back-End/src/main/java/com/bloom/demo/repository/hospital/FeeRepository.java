@@ -13,6 +13,8 @@ public interface FeeRepository extends ReactiveCrudRepository<Fee, Long> {
     @Query("SELECT * FROM fee WHERE patientId = :patientId")*/
     Flux<Fee> findAllByPatientId(Long patientId);
 
-    Flux<Fee> findFeesByFeeDateAfter(LocalDate localDate);
+    Flux<Fee> findFeesByFeeDateBetween(LocalDate dateA, LocalDate dateB);
+
+    Flux<Fee> findFeesByFeeDateBefore(LocalDate today);
 
 }

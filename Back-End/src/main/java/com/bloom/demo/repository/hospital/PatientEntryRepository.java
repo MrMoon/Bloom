@@ -13,4 +13,6 @@ public interface PatientEntryRepository extends ReactiveCrudRepository<PatientEn
     Mono<PatientEntry> findPatientEntryByPatientId(Long patientId);
 
     Mono<Long> countAllByPatientEntryType(PatientEntryType patientEntryType);
+
+    Flux<PatientEntry> findAllByPatientRoomNumber(Long roomNumber);
 }

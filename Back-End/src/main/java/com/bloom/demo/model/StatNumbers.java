@@ -11,4 +11,8 @@ public class StatNumbers {
         ++this.x;
     }
 
+    public void addX(Long number) {
+        this.x += number;
+    }
+
 }

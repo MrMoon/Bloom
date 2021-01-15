@@ -1,5 +1,6 @@
 package com.bloom.demo.service.hospital.impl;
 
+import com.bloom.demo.model.StatNumbers;
 import com.bloom.demo.model.hospital.Fee;
 import com.bloom.demo.model.hospital.FeePatient;
 import com.bloom.demo.model.patient.Patient;
@@ -79,10 +80,26 @@ public class FeeServiceImpl implements FeeService {
     }
 
     @Override
-    public Mono<Double> getTotalBeforeDay() {
+    public Mono<Double> getTotalBeforeToday() {
         return this.feeRepository
-                .findFeesByFeeDateAfter(LocalDate.now().minusDays(1))
+                .findFeesByFeeDateBetween(LocalDate.now().minusDays(1), LocalDate.now())
                 .flatMap(fee -> Mono.just(fee.getFeeAmount()))
                 .reduce(0.0, Double::sum);
+    }
+
+    @Override
+    public Mono<StatNumbers> getFeeAnalysis() {
+        StatNumbers statNumbers = new StatNumbers();
+        return this.feeRepository
+                .findFeesByFeeDateBefore(LocalDate.now())
+                .concatMap(fee -> Mono.just(fee.getFeeAmount()))
+                .reduce(0.0, Double::sum)
+                .flatMap(total -> {
+                    statNumbers.setTotal(total.longValue());
+                    return this.getTotalBeforeToday().flatMap(todayFees -> {
+                        statNumbers.setX(todayFees.longValue());
+                        return Mono.just(statNumbers);
+                    });
+                });
     }
 }
