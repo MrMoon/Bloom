@@ -1,6 +1,7 @@
 package com.bloom.demo.controller.hospital;
 
 import com.bloom.demo.model.hospital.PatientEntry;
+import com.bloom.demo.model.hospital.PatientEntryType;
 import com.bloom.demo.model.patient.Patient;
 import com.bloom.demo.service.hospital.PatientEntryService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,11 @@ public class PatientEntryController {
     @GetMapping("/{patientEntryId}")
     public Mono<PatientEntry> getPatientEntryById(@PathVariable("patientEntryId") String patientEntryId) {
         return this.patientEntryService.getPatientEntryById(patientEntryId);
+    }
+
+    @GetMapping("/number/type/{patientEntryType}")
+    public Mono<Long> getNumberOfEntriesByType(@PathVariable("patientEntryType") PatientEntryType patientEntryType) {
+        return this.patientEntryService.getNumberOfEntriesType(patientEntryType);
     }
 
     @GetMapping("/patient/{patientEntryId}")

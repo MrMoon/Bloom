@@ -27,5 +27,9 @@ export class FeeService {
   getPatientFeesAmountByPatientId = (patientId: number): Observable<number> =>
     this.http.get<number>(this.feeURL + 'patient/price/' + patientId);
 
-  getAll = (): Observable<Array<Fee>> => this.http.get<Array<Fee>>(this.feeURL);
+  getAll = (): Observable<Array<FeePatient>> => this.http.get<Array<FeePatient>>(this.feeURL);
+
+  getFeeTotalInDay = (): Observable<number> => this.http.get<number>(this.feeURL + 'yesterday');
+
+  getFeeAnalysis = (): Observable<StatNumbers> => this.http.get<StatNumbers>(this.feeURL + 'analysis');
 }

@@ -1,6 +1,8 @@
 package com.bloom.demo.service.hospital;
 
+import com.bloom.demo.model.StatNumbers;
 import com.bloom.demo.model.hospital.Fee;
+import com.bloom.demo.model.hospital.FeePatient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -20,6 +22,9 @@ public interface FeeService {
 
     Mono<Double> getAllFees();
 
-    Flux<Fee> getAll();
+    Flux<FeePatient> getAll();
 
+    Mono<Double> getTotalBeforeToday();
+
+    Mono<StatNumbers> getFeeAnalysis();
 }

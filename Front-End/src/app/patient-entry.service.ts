@@ -30,4 +30,8 @@ export class PatientEntryService {
     this.http.get<Patient>(this.patientEntryURL + 'patient/' + patientEntryId);
 
   getAll = (): Observable<Array<PatientEntry>> => this.http.get<Array<PatientEntry>>(this.patientEntryURL);
+
+  getNumberOfEntriesByType = (type: string): Observable<number> => this.http.get<number>(this.patientEntryURL + 'number/type/' + type);
+
+  getNumberOfAdmitted = (): Observable<StatNumbers> => this.http.get<StatNumbers>(this.patientEntryURL + 'numbers');
 }

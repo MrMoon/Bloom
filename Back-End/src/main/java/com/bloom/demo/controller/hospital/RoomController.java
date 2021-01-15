@@ -1,5 +1,6 @@
 package com.bloom.demo.controller.hospital;
 
+import com.bloom.demo.model.StatNumbers;
 import com.bloom.demo.model.hospital.Room;
 import com.bloom.demo.service.hospital.RoomService;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +21,19 @@ public class RoomController {
         return this.roomService.getALl();
     }
 
+    @GetMapping("/number/{roomType}")
+    public Mono<Long> getNumberByType(@PathVariable("roomType") String roomType) {
+        return this.roomService.getRoomTypesNumber(roomType);
+    }
+
     @GetMapping("/{roomNumber}")
     public Mono<Room> getRoomByNumber(@PathVariable("roomNumber") String roomNumber) {
         return this.roomService.getRoomByNumber(roomNumber);
+    }
+
+    @GetMapping("/analysis")
+    public Mono<StatNumbers> getRoomAnalysis() {
+        return this.roomService.getNumberOfRoomsWithStatus();
     }
 
     @PostMapping("/")

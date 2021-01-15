@@ -26,7 +26,9 @@
             </div>
           </div>
         </div>
-        <button class="btn btn-outline-success btn-fw" type="submit">Add room</button>
+        <button class="btn btn-outline-success btn-fw"
+                type="submit">{{this.room.roomId === undefined ? 'Add' : 'Update'}} room
+        </button>
       </form>
     </div>
   </div>

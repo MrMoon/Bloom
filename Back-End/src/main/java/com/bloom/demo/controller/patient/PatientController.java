@@ -1,5 +1,6 @@
 package com.bloom.demo.controller.patient;
 
+import com.bloom.demo.model.StatNumbers;
 import com.bloom.demo.model.patient.Patient;
 import com.bloom.demo.service.patient.PatientService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,21 @@ public class PatientController {
     @GetMapping("/")
     public Flux<Patient> getAllPatients() {
         return this.patientService.getAll();
+    }
+
+    @GetMapping("/numbers")
+    public Mono<StatNumbers> getPatientNumbersOfAdmitted() {
+        return this.patientService.getNumbersAdmitted();
+    }
+
+    @GetMapping("/gender")
+    public Mono<StatNumbers> getPatientNumbersGender() {
+        return this.patientService.getNumbersGender();
+    }
+
+    @GetMapping("/teens")
+    public Mono<StatNumbers> getPatientNumbersTeens() {
+        return this.patientService.getNumberOfTeens();
     }
 
     @GetMapping("/{patientId}")

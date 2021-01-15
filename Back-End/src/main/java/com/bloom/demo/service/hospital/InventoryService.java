@@ -15,4 +15,7 @@ public interface InventoryService {
     Mono<Void> deleteInventory(String inventoryId, String inventoryMangedBy);
 
     Flux<Inventory> getInventoriesByNurseId(String nurseId);
+
+    Mono<Long> getNumberByRecordType(String recordType);
+
 }
