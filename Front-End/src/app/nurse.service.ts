@@ -25,4 +25,5 @@ export class NurseService {
   getNurseInventories = (nurseId: number): Observable<Array<Inventory>> =>
     this.http.get<Array<Inventory>>(this.nurseURL + 'inventories/' + nurseId);
 
+
 }
