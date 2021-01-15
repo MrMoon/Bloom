@@ -1,5 +1,7 @@
 package com.bloom.demo.service.employee.impl;
 
+import com.bloom.demo.model.StatNumbers;
+import com.bloom.demo.model.StatNumbersString;
 import com.bloom.demo.model.employee.Employee;
 import com.bloom.demo.model.employee.JobType;
 import com.bloom.demo.repository.employee.EmployeeRepository;
@@ -48,6 +50,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Flux<Employee> getAll() {
         return this.employeeRepository.findAll();
+    }
+
+    @Override
+    public Flux<StatNumbers> getSalariesFrequencies() {
+        return this.employeeRepository.findEmployeeSalariesFrequencies();
+    }
+
+    @Override
+    public Flux<StatNumbersString> getJobTypeFrequencies() {
+        return this.employeeRepository.findEmployeeJobTypeFrequencies();
     }
 
     private JobType getEmployeeJobType(@NotNull String jobType) {

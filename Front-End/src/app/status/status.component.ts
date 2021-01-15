@@ -4,6 +4,7 @@ import {PatientEntryService} from '../patient-entry.service';
 import {RoomService} from '../room.service';
 import {PatientService} from '../patient.service';
 import {InventoryService} from '../inventory.service';
+import {EmployeeService} from '../employee.service';
 
 @Component({
   selector: 'app-status',
@@ -28,6 +29,16 @@ export class StatusComponent implements OnInit {
   numberOfBloodUnits: number;
   patientEntryAnalysis: StatNumbers;
   genderPieChartData: any;
+  salaryFreq: any = [];
+  chartIsReady: boolean;
+  jobTypePieChartIsReady: boolean;
+  salaryBarChartIsReady: boolean;
+  patientEntryAnalysisIsReady: boolean;
+  jobTypePieChartData: any = [];
+  jobTypeTempNames: Array<string> = new Array<string>();
+  jobTypeTempFreq: Array<number> = new Array<number>();
+  jobTypePieChartLabels: Array<string> = new Array<string>();
+  salaryNumbers: Array<string> = new Array<string>();
   genderPieChartLabels = ['Female', 'Male'];
   doughnutPieChartOptions = {
     responsive: true,
@@ -41,18 +52,56 @@ export class StatusComponent implements OnInit {
       borderColor: [
         'rgba(255,99,132,1)',
         'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)'
+        'rgba(255, 206, 86, 1)',
+        'rgb(166,1,255 , 1)'
       ], backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)'
+        'rgba(255,206,86,0.2)',
+        'rgba(166,1,255 ,0.2)'
       ]
     }
   ];
-  charIsReady: boolean;
+  barChartOptions = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    },
+    legend: {
+      display: false
+    },
+    elements: {
+      point: {
+        radius: 0
+      }
+    }
+  };
+  barChartColors = [
+    {
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ]
+    }
+  ];
 
   constructor(private feeService: FeeService, private patientEntryService: PatientEntryService,
-              private roomService: RoomService, private patentService: PatientService
+              private employeeService: EmployeeService, private roomService: RoomService, private patentService: PatientService
     , private inventoryService: InventoryService) {
   }
 
@@ -79,16 +128,44 @@ export class StatusComponent implements OnInit {
       this.numberOfPatientTeenDiff = Number(((this.numberOfTeens / this.numberOfPatients) * 100).toFixed(2));
     });
     this.patentService.getGenderAnalysis().subscribe(value => {
-      this.genderAnalysis = value; // Total = total number of patients , x = number of females
+      this.genderAnalysis = value;
       this.genderPieChartData = [
         {
           data: [this.genderAnalysis.x, this.genderAnalysis.total - this.genderAnalysis.x]
         }
       ];
-      this.charIsReady = true;
+      this.chartIsReady = true;
     });
     this.inventoryService.getNumberOfBloodUnits().subscribe(value => this.numberOfBloodUnits = value);
-    this.patentService.getNumberOfAdmitted().subscribe(value => this.patientEntryAnalysis = value);
+    this.patentService.getNumberOfAdmitted().subscribe(value => {
+      this.patientEntryAnalysis = value;
+      this.patientEntryAnalysisIsReady = true;
+    });
+    this.employeeService.getSalaryFreq().subscribe(value => {
+      value.sort((a, b) => (a.x > b.x) ? -1 : 1);
+      value.map(statNumber => statNumber.x).map(x => {
+        this.salaryFreq.push({
+          data: x,
+          borderWidth: 1,
+          fill: false
+        });
+      });
+      value.map(statNumber => statNumber.total).map(total => this.salaryNumbers.push(total.toString()));
+      this.salaryBarChartIsReady = true;
+    });
+    this.employeeService.getJobTypeFreq().subscribe(value => {
+      value.forEach(statNumber => {
+        this.jobTypeTempFreq.push(statNumber.freq);
+        this.jobTypeTempNames.push(statNumber.name);
+      })
+    });
+    this.jobTypePieChartLabels = this.jobTypeTempNames;
+    this.jobTypePieChartData = [
+      {
+        data: this.jobTypeTempFreq
+      }
+    ];
+    this.jobTypePieChartIsReady = true;
   }
 
 }
