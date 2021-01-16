@@ -14,17 +14,17 @@ import {NurseComponent} from './nurse/nurse.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-  {path: 'room', component: RoomComponent},
-  {path: 'doctor-patient', component: DoctorPatientComponent},
-  {path: 'employee', component: EmployeeComponent},
-  {path: 'fee', component: FeeComponent},
-  {path: 'inventory', component: InventoryComponent},
   {path: 'patient', component: PatientComponent},
   {path: 'patient-entry', component: PatientEntryComponent},
   {path: 'patient-status', component: PatientStatusComponent},
+  {path: 'employee', component: EmployeeComponent},
+  {path: 'nurse', component: NurseComponent},
   {path: 'room', component: RoomComponent},
-  {path: 'dashboard', component: StatusComponent},
-  {path: 'nurse', component: NurseComponent}
+  {path: 'fee', component: FeeComponent},
+  {path: 'room', component: RoomComponent},
+  {path: 'inventory', component: InventoryComponent},
+  {path: 'doctor-patient', component: DoctorPatientComponent},
+  {path: 'dashboard', component: StatusComponent}
 ];
 
 @NgModule({

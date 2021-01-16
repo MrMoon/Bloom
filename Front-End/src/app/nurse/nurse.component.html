@@ -24,7 +24,7 @@
     <div class="card">
       <div class="card-body">
         <div class="card-title">
-          <h2>Nurse {{nurseId}} Details</h2>
+          <h2>Nurse {{this.nurse.employeeId}} Details</h2>
         </div>
         <hr/>
         <form (ngSubmit)="updatePatient()" class="forms-sample">
@@ -76,14 +76,14 @@
   </div>
 </div>
 
-<div *ngIf="nurseFlag" class="row">
+<div *ngIf="nurseFlag && this.nurse.nurseRank === 'ONE'" class="row">
   <div class="col-md-12">
     <div class="card">
       <div class="card-body">
         <div class="card">
           <div class="card-body">
             <div class="card-title">
-              <h2>Nurse {{nurseId}} Inventories Details {{inventories.length === 0 ? 'EMPTY' : ''}}</h2>
+              <h2>Nurse {{this.nurse.employeeId}} Inventories Details {{inventories.length === 0 ? 'EMPTY' : ''}}</h2>
             </div>
             <div *ngFor="let inventory of inventories">
               <div class="row">
