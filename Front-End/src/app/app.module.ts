@@ -4,6 +4,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {AppRoutingModule} from './app-routing.module';
+import {DatePipe} from '@angular/common'
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -69,7 +70,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgSelectModule,
     ChartsModule
   ],
-  providers: [ThemeService],
+  providers: [ThemeService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

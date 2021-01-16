@@ -6,6 +6,7 @@ import {Doctor} from '../model/Doctor';
 import {Nurse} from '../model/Nurse';
 import {DoctorService} from '../doctor.service';
 import {NurseService} from '../nurse.service';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-employee',
@@ -29,7 +30,7 @@ export class EmployeeComponent implements OnInit {
   doctorSelectedDays: Array<string>;
 
   constructor(private doctorService: DoctorService, private nurseService: NurseService,
-              private employeeService: EmployeeService, private toast: ToastrService) {
+              private employeeService: EmployeeService, private toast: ToastrService, private datePipe: DatePipe) {
   }
 
   ngOnInit(): void {
@@ -37,6 +38,8 @@ export class EmployeeComponent implements OnInit {
   }
 
   onSubmitEmployee = () => {
+    this.employee.employeeDateOfBirth = this.datePipe.transform(this.employee.employeeDateOfBirth, 'yyyy-MM-dd');
+    console.log(this.employee.employeeDateOfBirth);
     this.toast.clear();
     this.employee.employeeName = this.firstName + ' ' + this.lastName;
     if (this.isDoctor) {

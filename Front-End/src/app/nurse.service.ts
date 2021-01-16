@@ -22,7 +22,7 @@ export class NurseService {
 
   deleteNurse = (nurseId: string): Observable<HttpResponse<any>> => this.http.delete(this.nurseURL + nurseId, {observe: 'response'});
 
-  getNurseInventories = (nurseId: number): Observable<Array<Inventory>> =>
+  getNurseInventories = (nurseId: string): Observable<Array<Inventory>> =>
     this.http.get<Array<Inventory>>(this.nurseURL + 'inventories/' + nurseId);
 
 

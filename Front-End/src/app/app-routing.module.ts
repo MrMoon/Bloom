@@ -9,6 +9,7 @@ import {PatientComponent} from './patient/patient.component';
 import {PatientEntryComponent} from './patient-entry/patient-entry.component';
 import {PatientStatusComponent} from './patient-status/patient-status.component';
 import {StatusComponent} from './status/status.component';
+import {NurseComponent} from './nurse/nurse.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'patient-entry', component: PatientEntryComponent},
   {path: 'patient-status', component: PatientStatusComponent},
   {path: 'room', component: RoomComponent},
-  {path: 'dashboard', component: StatusComponent}
+  {path: 'dashboard', component: StatusComponent},
+  {path: 'nurse', component: NurseComponent}
 ];
 
 @NgModule({
