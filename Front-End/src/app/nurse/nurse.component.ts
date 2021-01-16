@@ -4,6 +4,7 @@ import {Nurse} from '../model/Nurse';
 import {ToastrService} from 'ngx-toastr';
 import {Inventory} from '../model/Inventory';
 import {DatePipe} from '@angular/common';
+import {InventoryService} from '../inventory.service';
 
 @Component({
   selector: 'app-nurse',
@@ -19,7 +20,8 @@ export class NurseComponent implements OnInit {
   nurseRanks = ['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE'];
   nurseShifts = ['A', 'B', 'C'];
 
-  constructor(private nurseService: NurseService, private toast: ToastrService, private datePipe: DatePipe) {
+  constructor(private nurseService: NurseService,
+              private inventoryService: InventoryService, private toast: ToastrService, private datePipe: DatePipe) {
   }
 
   ngOnInit(): void {
@@ -59,5 +61,19 @@ export class NurseComponent implements OnInit {
         this.nurseFlag = true;
       }
     }, error => this.toast.error('Nurse ' + this.nurse.employeeId + ' Delete Failed!!\n' + error, 'Nurse Delete Status'));
+  }
+
+  deleteInventory(inventory: Inventory) {
+    this.inventoryService.deleteInventory(this.nurse.employeeId, inventory.inventoryId).subscribe(value => {
+      if (value.status === 200) {
+        const index = this.inventories.indexOf(inventory);
+        if (index > -1) {
+          this.inventories.splice(index, 1);
+          this.toast.success('Inventory with ID ' + inventory.inventoryId + ' Deleted Successfully', 'Inventory Delete Status');
+        } else this.toast.error('Inventory with ID ' + inventory.inventoryId + ' Delete Failed!!\n', 'Inventory Delete Status');
+      } else {
+        this.toast.error('Inventory with ID ' + inventory.inventoryId + ' Delete Failed!!\n', 'Inventory Delete Status');
+      }
+    }, error => this.toast.error('Inventory with ID ' + inventory.inventoryId + ' Delete Failed!!\n' + error, 'Inventory Delete Status'));
   }
 }

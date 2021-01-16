@@ -1,5 +1,5 @@
 export class Employee {
-  employeeId: bigint;
+  employeeId: number;
   employeeName: string;
   employeeJobType: string;
   jobType: string;

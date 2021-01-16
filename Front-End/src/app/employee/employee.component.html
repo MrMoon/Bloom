@@ -70,27 +70,25 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div *ngIf="isNurse">
+        <div *ngIf="isNurse" class="row">
+          <div class="col-md-6 grid-margin">
+            <label class="col-form-label">Nurse Rank</label>
             <div>
-              <label class="col-form-label">Nurse Rank</label>
-              <div>
-                <label>
-                  <select [(ngModel)]="nurse.nurseRank" class="form-control" name="nurseRank" required>
-                    <option *ngFor="let rank of nurseRanks" [value]="rank.toUpperCase()">{{rank}}</option>
-                  </select>
-                </label>
-              </div>
+              <label>
+                <select [(ngModel)]="nurse.nurseRank" class="form-control" name="nurseRank" required>
+                  <option *ngFor="let rank of nurseRanks" [value]="rank.toUpperCase()">{{rank}}</option>
+                </select>
+              </label>
             </div>
+          </div>
+          <div class="col-md-4 grid-margin">
+            <label class="col-form-label">Nurse Shift</label>
             <div>
-              <label class="col-form-label">Nurse Shift</label>
-              <div>
-                <label>
-                  <select [(ngModel)]="nurse.nurseShift" class="form-control" name="nurseShift" required>
-                    <option *ngFor="let shift of nurseShifts" [value]="shift.toUpperCase()">{{shift}}</option>
-                  </select>
-                </label>
-              </div>
+              <label>
+                <select [(ngModel)]="nurse.nurseShift" class="form-control" name="nurseShift" required>
+                  <option *ngFor="let shift of nurseShifts" [value]="shift.toUpperCase()">{{shift}}</option>
+                </select>
+              </label>
             </div>
           </div>
         </div>

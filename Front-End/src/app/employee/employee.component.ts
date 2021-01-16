@@ -59,12 +59,12 @@ export class EmployeeComponent implements OnInit {
       if (this.doctor.employeeId !== undefined) {
         this.doctorService.updateDoctor(this.doctor).subscribe(updatedDoctor => {
           this.doctor = updatedDoctor;
-          this.toast.success('Doctor Updated Successfully', 'Doctor ' + this.employee.employeeId + ' Status');
+          this.toast.success('Doctor Updated Successfully', 'Doctor ' + this.doctor.employeeId + ' Status');
         }, error => this.toast.error('Doctor Update Failed\n' + error, 'Doctor Update Status'));
       } else {
         this.doctorService.createDoctor(this.doctor).subscribe(savedDoctor => {
           this.doctor = savedDoctor;
-          this.toast.success('Doctor Created Successfully', 'Doctor ' + this.employee.employeeId + ' Status');
+          this.toast.success('Doctor Created Successfully', 'Doctor ' + this.doctor.employeeId + ' Status');
         }, error => this.toast.error('Doctor Creation Failed\n' + error, 'Doctor Creation Status'));
       }
     } else if (this.isNurse) {
@@ -77,12 +77,12 @@ export class EmployeeComponent implements OnInit {
       if (this.nurse.employeeId !== undefined) {
         this.nurseService.updateNurse(this.nurse).subscribe(updatedNurse => {
           this.nurse = updatedNurse;
-          this.toast.success('Nurse Updated Successfully', 'Nurse ' + this.employee.employeeId + ' Status');
+          this.toast.success('Nurse Updated Successfully', 'Nurse ' + this.nurse.employeeId + ' Status');
         }, error => this.toast.error('Nurse Update Failed\n' + error.value, 'Nurse Update Status'))
       } else {
         this.nurseService.createNurse(this.nurse).subscribe(savedNurse => {
           this.nurse = savedNurse;
-          this.toast.success('Nurse Created Successfully', 'Nurse ' + this.employee.employeeId + ' Status');
+          this.toast.success('Nurse Created Successfully', 'Nurse ' + this.nurse.employeeId + ' Status');
         }, error => this.toast.error('Nurse Creation Failed\n' + error.value, 'Nurse Creation Status'));
       }
     } else {
