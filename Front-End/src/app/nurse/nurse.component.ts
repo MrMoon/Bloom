@@ -30,16 +30,18 @@ export class NurseComponent implements OnInit {
   getNurseDetails() {
     this.toast.clear();
     if (this.nurseId === undefined || this.nurseId.length === 0) this.toast.error('Please Enter a valid ID', 'Nurse ID');
-    this.nurseService.getNurseById(this.nurseId).subscribe(value => {
-      if (value === null || value === undefined) {
-        this.toast.error('Nurse with ID ' + this.nurseId + ' Does not exist', 'Nurse ' + this.nurseId + ' Status');
-        this.nurseFlag = false;
-      } else {
-        this.nurse = value;
-        this.nurseFlag = true;
-      }
-    });
-    this.nurseService.getNurseInventories(this.nurseId).subscribe(value => this.inventories = value);
+    else {
+      this.nurseService.getNurseById(this.nurseId).subscribe(value => {
+        if (value === null || value === undefined) {
+          this.toast.error('Nurse with ID ' + this.nurseId + ' Does not exist', 'Nurse ' + this.nurseId + ' Status');
+          this.nurseFlag = false;
+        } else {
+          this.nurse = value;
+          this.nurseFlag = true;
+        }
+      });
+      this.nurseService.getNurseInventories(this.nurseId).subscribe(value => this.inventories = value);
+    }
   }
 
   updatePatient() {

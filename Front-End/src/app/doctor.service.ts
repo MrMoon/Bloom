@@ -15,20 +15,20 @@ export class DoctorService {
   constructor(private http: HttpClient) {
   }
 
-  getDoctorById = (doctorId: number): Observable<Doctor> => this.http.get<Doctor>(this.doctorURL + doctorId);
+  getDoctorById = (doctorId: string): Observable<Doctor> => this.http.get<Doctor>(this.doctorURL + doctorId);
 
   createDoctor = (doctor: Doctor): Observable<Doctor> => this.http.post<Doctor>(this.doctorURL, doctor);
 
   updateDoctor = (doctor: Doctor): Observable<Doctor> => this.http.put<Doctor>(this.doctorURL, doctor);
 
-  deleteDoctor = (doctorId: string): Observable<HttpResponse<any>> => this.http.delete(this.doctorURL + doctorId, {observe: 'response'});
+  deleteDoctor = (doctorId: number): Observable<HttpResponse<any>> => this.http.delete(this.doctorURL + doctorId, {observe: 'response'});
 
   getDoctorPatients = (doctorId: string): Observable<Array<Patient>> =>
     this.http.get<Array<Patient>>(this.doctorURL + 'patient/' + doctorId);
 
   getDoctorFees = (doctorId: string): Observable<number> => this.http.get<number>(this.doctorURL + 'fee/' + doctorId);
 
-  getAvailableTimes = (doctorId: string): Observable<Array<DoctorAvailableTimes>> =>
+  getAvailableTimes = (doctorId: number): Observable<Array<DoctorAvailableTimes>> =>
     this.http.get<Array<DoctorAvailableTimes>>(this.doctorURL + 'time/' + doctorId);
 
   getAvailableDays = (doctorId: string): Observable<Array<string>> => this.http.get<Array<string>>(this.doctorURL + 'days/' + doctorId);
@@ -36,5 +36,6 @@ export class DoctorService {
   addAvailableTime = (doctorAvailableTime: DoctorAvailableTimes): Observable<DoctorAvailableTimes> =>
     this.http.put<DoctorAvailableTimes>(this.doctorURL + 'add_time/', doctorAvailableTime);
 
-  removeAvailableTime = (doctorAvailableTime: DoctorAvailableTimes): Observable<HttpResponse<any>> => this.http.delete(this.doctorURL + 'remove_time/' + doctorAvailableTime, {observe: 'response'});
+  removeAvailableTime = (doctorAvailableTime: DoctorAvailableTimes): Observable<HttpResponse<any>> =>
+    this.http.post<HttpResponse<any>>(this.doctorURL + 'remove_time/', doctorAvailableTime, {observe: 'response'});
 }

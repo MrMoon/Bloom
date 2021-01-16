@@ -10,6 +10,7 @@ import {PatientEntryComponent} from './patient-entry/patient-entry.component';
 import {PatientStatusComponent} from './patient-status/patient-status.component';
 import {StatusComponent} from './status/status.component';
 import {NurseComponent} from './nurse/nurse.component';
+import {DoctorComponent} from './doctor/doctor.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'employee', component: EmployeeComponent},
   {path: 'nurse', component: NurseComponent},
   {path: 'room', component: RoomComponent},
+  {path: 'doctor', component: DoctorComponent},
   {path: 'fee', component: FeeComponent},
   {path: 'room', component: RoomComponent},
   {path: 'inventory', component: InventoryComponent},
