@@ -26,6 +26,7 @@ export class PatientComponent implements OnInit {
   }
 
   onSubmitPatient = () => {
+    if (this.patient === null || this.patient === undefined) this.toast.error('Please Enter valid values', 'Patient Creation');
     this.toast.clear();
     this.patient.patientDateOfBirth = this.datePipe.transform(this.patient.patientDateOfBirth, 'yyyy-MM-dd');
     this.patient.patientName = this.firstName + ' ' + this.lastName;
