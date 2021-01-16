@@ -2,8 +2,8 @@
   <div class="navbar-menu-wrapper d-flex align-items-stretch">
     <ul class="navbar-nav navbar-nav-right">
       <li class="nav-item d-none d-lg-block" ngbDropdown>
-        <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" ngbDropdownToggle translate>+
-          Create </a>
+        <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" ngbDropdownToggle translate> Go
+          To </a>
         <div aria-labelledby="createbuttonDropdown"
              class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
              ngbDropdownMenu>
@@ -28,6 +28,17 @@
             </div>
           </a>
           <div class="dropdown-divider"></div>
+          <a [routerLink]="'patient-status'" class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-file-outline text-primary"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <p class="preview-subject ellipsis mb-1" translate>Patient Status</p>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
           <a [routerLink]="'employee'" class="dropdown-item preview-item">
             <div class="preview-thumbnail">
               <div class="preview-icon bg-dark rounded-circle">
@@ -36,6 +47,39 @@
             </div>
             <div class="preview-item-content">
               <p class="preview-subject ellipsis mb-1" translate>Employee</p>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a [routerLink]="'nurse'" class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-web text-info"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <p class="preview-subject ellipsis mb-1" translate>Nurse</p>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a [routerLink]="'doctor'" class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-web text-info"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <p class="preview-subject ellipsis mb-1" translate>Doctor</p>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a [routerLink]="'doctor-patient'" class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-web text-info"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <p class="preview-subject ellipsis mb-1" translate>Doctor Patients</p>
             </div>
           </a>
           <div class="dropdown-divider"></div>
@@ -60,8 +104,20 @@
               <p class="preview-subject ellipsis mb-1" translate>Room</p>
             </div>
           </a>
+          <div class="dropdown-divider"></div>
+          <a [routerLink]="'inventory'" class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-layers text-danger"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <p class="preview-subject ellipsis mb-1" translate>Inventory</p>
+            </div>
+          </a>
         </div>
       </li>
+      <li class="nav-item d-none d-lg-block" ngbDropdown>
       <li class="nav-item nav-settings d-none d-lg-block">
         <a [routerLink]="'dashboard'" class="nav-link">
           <i class="mdi mdi-view-grid"></i>

@@ -6,6 +6,7 @@ import {Doctor} from '../model/Doctor';
 import {Nurse} from '../model/Nurse';
 import {DoctorService} from '../doctor.service';
 import {NurseService} from '../nurse.service';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-employee',
@@ -29,7 +30,7 @@ export class EmployeeComponent implements OnInit {
   doctorSelectedDays: Array<string>;
 
   constructor(private doctorService: DoctorService, private nurseService: NurseService,
-              private employeeService: EmployeeService, private toast: ToastrService) {
+              private employeeService: EmployeeService, private toast: ToastrService, private datePipe: DatePipe) {
   }
 
   ngOnInit(): void {
@@ -37,6 +38,8 @@ export class EmployeeComponent implements OnInit {
   }
 
   onSubmitEmployee = () => {
+    this.employee.employeeDateOfBirth = this.datePipe.transform(this.employee.employeeDateOfBirth, 'yyyy-MM-dd');
+    console.log(this.employee.employeeDateOfBirth);
     this.toast.clear();
     this.employee.employeeName = this.firstName + ' ' + this.lastName;
     if (this.isDoctor) {
@@ -56,12 +59,12 @@ export class EmployeeComponent implements OnInit {
       if (this.doctor.employeeId !== undefined) {
         this.doctorService.updateDoctor(this.doctor).subscribe(updatedDoctor => {
           this.doctor = updatedDoctor;
-          this.toast.success('Doctor Updated Successfully', 'Doctor ' + this.employee.employeeId + ' Status');
+          this.toast.success('Doctor Updated Successfully', 'Doctor ' + this.doctor.employeeId + ' Status');
         }, error => this.toast.error('Doctor Update Failed\n' + error, 'Doctor Update Status'));
       } else {
         this.doctorService.createDoctor(this.doctor).subscribe(savedDoctor => {
           this.doctor = savedDoctor;
-          this.toast.success('Doctor Created Successfully', 'Doctor ' + this.employee.employeeId + ' Status');
+          this.toast.success('Doctor Created Successfully', 'Doctor ' + this.doctor.employeeId + ' Status');
         }, error => this.toast.error('Doctor Creation Failed\n' + error, 'Doctor Creation Status'));
       }
     } else if (this.isNurse) {
@@ -74,12 +77,12 @@ export class EmployeeComponent implements OnInit {
       if (this.nurse.employeeId !== undefined) {
         this.nurseService.updateNurse(this.nurse).subscribe(updatedNurse => {
           this.nurse = updatedNurse;
-          this.toast.success('Nurse Updated Successfully', 'Nurse ' + this.employee.employeeId + ' Status');
+          this.toast.success('Nurse Updated Successfully', 'Nurse ' + this.nurse.employeeId + ' Status');
         }, error => this.toast.error('Nurse Update Failed\n' + error.value, 'Nurse Update Status'))
       } else {
         this.nurseService.createNurse(this.nurse).subscribe(savedNurse => {
           this.nurse = savedNurse;
-          this.toast.success('Nurse Created Successfully', 'Nurse ' + this.employee.employeeId + ' Status');
+          this.toast.success('Nurse Created Successfully', 'Nurse ' + this.nurse.employeeId + ' Status');
         }, error => this.toast.error('Nurse Creation Failed\n' + error.value, 'Nurse Creation Status'));
       }
     } else {
@@ -117,5 +120,23 @@ export class EmployeeComponent implements OnInit {
       this.employee.employeeSalary = 0.0;
       this.flag = true;
     }
+  }
+
+  deleteEmployee(employee: Employee) {
+    console.log(employee);
+    this.toast.clear();
+    this.employeeService.deleteEmployee(employee.employeeId).subscribe(value => {
+      if (value.status === 200) {
+        const index = this.employees.indexOf(employee);
+        if (index > -1) {
+          this.employees.splice(index, 1);
+          this.toast.success('Employee ' + employee.employeeId + ' Deleted Successfully\n', 'Employee Delete Status');
+        } else {
+          this.toast.error('Employee ' + employee.employeeId + ' Delete Failed!!\n', 'Employee Delete Status');
+        }
+      } else {
+        this.toast.error('Employee ' + employee.employeeId + ' Delete Failed!!\n', 'Employee Delete Status');
+      }
+    }, error => this.toast.error('Employee ' + employee.employeeId + ' Delete Failed!!\n' + error, 'Employee Delete Status'));
   }
 }

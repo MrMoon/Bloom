@@ -1,0 +1,117 @@
+<div class="row">
+  <div class="col-md-4 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Enter Nurse ID</h4>
+        <form (ngSubmit)="getNurseDetails()" class="form-sample">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <div class="col-sm-9">
+                  <label>
+                    <input [(ngModel)]="nurseId" class="form-control" name="nurseId" type="text"/>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-outline-success btn-fw" type="submit">Get Nurse Details</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="nurseFlag" class="col-md-8 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">
+          <h2>Nurse {{this.nurse.employeeId}} Details</h2>
+        </div>
+        <hr/>
+        <form (ngSubmit)="updatePatient()" class="forms-sample">
+          <div class="form-group">
+            <label for="nurseName">Name</label>
+            <input [(ngModel)]="nurse.employeeName" class="form-control" id="nurseName" name="nurseName" type="text"
+                   value="{{nurse.employeeName}}"/>
+          </div>
+          <div class="form-group">
+            <label for="nurseDateOfBirth">Birth Date</label>
+            <input [(ngModel)]="nurse.employeeDateOfBirth" class="form-control" id="nurseDateOfBirth"
+                   name="nurseDateOfBirth"
+                   type="date" value="{{nurse.employeeDateOfBirth}}"/>
+          </div>
+          <div class="form-group">
+            <label for="nurseSalary">Salary</label>
+            <input [(ngModel)]="nurse.employeeSalary" class="form-control" id="nurseSalary" name="nurseSalary"
+                   type="text"
+                   value="{{nurse.employeeSalary}}"/>
+          </div>
+          <div>
+            <label class="col-form-label">Rank</label>
+            <div>
+              <label>
+                <select [(ngModel)]="nurse.nurseRank" class="form-control" name="nurseRank" required>
+                  <option *ngFor="let rank of nurseRanks" [value]="rank.toUpperCase()">{{rank}}</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <div>
+            <label class="col-form-label">Shift</label>
+            <div>
+              <label>
+                <select [(ngModel)]="nurse.nurseShift" class="form-control" name="nurseShift" required>
+                  <option *ngFor="let shift of nurseShifts" [value]="shift.toUpperCase()">{{shift}}</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <button class="btn btn-primary mr-2" type="submit">Update</button>
+
+          <button (click)="deleteNurse()" class="btn btn-outline-danger btn-fw" type="button">Delete
+            Nurse
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="nurseFlag && this.nurse.nurseRank === 'ONE'" class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title">
+              <h2>Nurse {{this.nurse.employeeId}} Inventories Details {{inventories.length === 0 ? 'EMPTY' : ''}}</h2>
+            </div>
+            <div *ngFor="let inventory of inventories">
+              <div class="row">
+                <div class="col-12">
+                  <div class="preview-list">
+                    <div class="preview-item border-bottom">
+                      <div class="preview-item-content d-sm-flex flex-grow">
+                        <div class="flex-grow">
+                          <h6 class="preview-subject">{{inventory.inventoryRecordType}}</h6>
+                          <p class="text-muted mb-0">{{inventory.inventoryAmount}}</p>
+                        </div>
+                        <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                          <p class="text-muted">{{inventory.inventoryRecord}}</p>
+                          <p class="text-muted mb-0">{{inventory.inventoryId}}</p>
+                          <button (click)="deleteInventory(inventory)" class="btn btn-outline-danger btn-fw"
+                                  type="button">Delete
+                            Inventory
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

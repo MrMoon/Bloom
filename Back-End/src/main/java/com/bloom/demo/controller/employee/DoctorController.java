@@ -52,7 +52,7 @@ public class DoctorController {
         return this.doctorService.getDoctorById(doctorId).flatMap(doctor -> {
             ArrayList<Days> days = new ArrayList<>();
             String doctorDays = doctor.getDoctorAvailableDays();
-            for (int i = 0 ; i < 7 ; ++i) if (doctorDays.charAt(i) == '1') days.add(Days.values()[i]);
+            for (int i = 0; i < 7; ++i) if (doctorDays.charAt(i) == '1') days.add(Days.values()[i]);
             return Mono.just(days);
         }).flatMapIterable(days -> days);
     }
@@ -60,6 +60,11 @@ public class DoctorController {
     @PostMapping("/")
     public Mono<Doctor> createDoctor(@RequestBody Doctor doctor) {
         return this.doctorService.createDoctor(doctor);
+    }
+
+    @PostMapping("/remove_time")
+    public Mono<Void> removeDoctorAvailableTimes(@RequestBody DoctorAvailableTimes doctorAvailableTimes) {
+        return this.doctorAvailableTimesService.removeDoctorAvailableDay(doctorAvailableTimes.getTempId().toString());
     }
 
     @PutMapping("/")
@@ -75,11 +80,6 @@ public class DoctorController {
     @DeleteMapping("/{doctorId}")
     public Mono<Void> deleteDoctor(@PathVariable("doctorId") String doctorId) {
         return this.doctorService.deleteDoctorById(doctorId);
-    }
-
-    @DeleteMapping("/remove_time/")
-    public Mono<Void> removeDoctorAvailableTimes(@RequestBody DoctorAvailableTimes doctorAvailableTimes) {
-        return this.doctorAvailableTimesService.removeDoctorAvailableDay(doctorAvailableTimes.getTempId().toString());
     }
 
 }

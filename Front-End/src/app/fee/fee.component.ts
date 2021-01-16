@@ -42,4 +42,18 @@ export class FeeComponent implements OnInit {
       this.flag = true;
     }
   }
+
+  deleteFee(f: FeePatient) {
+    this.feeService.deleteFee(f.feePaymentNumber).subscribe(value => {
+      if (value.status === 200) {
+        const index = this.fees.indexOf(f);
+        if (index > -1) {
+          this.fees.splice(index, 1);
+          this.toast.success('Fee Deleted Successfully', 'Fee ' + this.fee.feePaymentNumber + ' Status');
+        } else {
+          this.toast.error('Fee Delete Failed\n', 'Fee Delete Status');
+        }
+      }
+    }, error => this.toast.error('Fee Delete Failed\n' + error, 'Fee Delete Status'));
+  }
 }

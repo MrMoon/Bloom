@@ -1,5 +1,5 @@
 export class DoctorAvailableTimes {
-  tempId: bigint;
-  doctorId: bigint;
+  tempId: number;
+  doctorId: number;
   timing: string;
 }

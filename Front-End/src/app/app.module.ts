@@ -4,6 +4,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {AppRoutingModule} from './app-routing.module';
+import {DatePipe} from '@angular/common'
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -26,6 +27,8 @@ import {PatientStatusComponent} from './patient-status/patient-status.component'
 import {DoctorPatientComponent} from './doctor-patient/doctor-patient.component';
 import {StatusComponent} from './status/status.component';
 import {ChartsModule, ThemeService} from 'ng2-charts';
+import {NurseComponent} from './nurse/nurse.component';
+import {DoctorComponent} from './doctor/doctor.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/');
@@ -46,6 +49,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     PatientStatusComponent,
     DoctorPatientComponent,
     StatusComponent,
+    NurseComponent,
+    DoctorComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +72,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgSelectModule,
     ChartsModule
   ],
-  providers: [ThemeService],
+  providers: [ThemeService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

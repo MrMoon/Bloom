@@ -9,19 +9,23 @@ import {PatientComponent} from './patient/patient.component';
 import {PatientEntryComponent} from './patient-entry/patient-entry.component';
 import {PatientStatusComponent} from './patient-status/patient-status.component';
 import {StatusComponent} from './status/status.component';
+import {NurseComponent} from './nurse/nurse.component';
+import {DoctorComponent} from './doctor/doctor.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-  {path: 'room', component: RoomComponent},
-  {path: 'doctor-patient', component: DoctorPatientComponent},
-  {path: 'employee', component: EmployeeComponent},
-  {path: 'fee', component: FeeComponent},
-  {path: 'inventory', component: InventoryComponent},
   {path: 'patient', component: PatientComponent},
   {path: 'patient-entry', component: PatientEntryComponent},
   {path: 'patient-status', component: PatientStatusComponent},
+  {path: 'employee', component: EmployeeComponent},
+  {path: 'nurse', component: NurseComponent},
   {path: 'room', component: RoomComponent},
+  {path: 'doctor', component: DoctorComponent},
+  {path: 'fee', component: FeeComponent},
+  {path: 'room', component: RoomComponent},
+  {path: 'inventory', component: InventoryComponent},
+  {path: 'doctor-patient', component: DoctorPatientComponent},
   {path: 'dashboard', component: StatusComponent}
 ];
 

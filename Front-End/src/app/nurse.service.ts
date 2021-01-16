@@ -14,15 +14,15 @@ export class NurseService {
   constructor(private http: HttpClient) {
   }
 
-  getNurseById = (nurseId: number): Observable<Nurse> => this.http.get<Nurse>(this.nurseURL + nurseId);
+  getNurseById = (nurseId: string): Observable<Nurse> => this.http.get<Nurse>(this.nurseURL + nurseId);
 
   createNurse = (nurse: Nurse): Observable<Nurse> => this.http.post<Nurse>(this.nurseURL, nurse);
 
   updateNurse = (nurse: Nurse): Observable<Nurse> => this.http.put<Nurse>(this.nurseURL, nurse);
 
-  deleteNurse = (nurseId: number): Observable<HttpResponse<any>> => this.http.delete(this.nurseURL + nurseId, {observe: 'response'});
+  deleteNurse = (nurseId: string): Observable<HttpResponse<any>> => this.http.delete(this.nurseURL + nurseId, {observe: 'response'});
 
-  getNurseInventories = (nurseId: number): Observable<Array<Inventory>> =>
+  getNurseInventories = (nurseId: string): Observable<Array<Inventory>> =>
     this.http.get<Array<Inventory>>(this.nurseURL + 'inventories/' + nurseId);
 
 
