@@ -31,7 +31,8 @@ export class InventoryComponent implements OnInit {
   }
 
   onInventorySubmit = () => {
-    if (this.inventory.inventoryId !== undefined && this.inventory.inventoryMangedBy !== undefined) {
+    if ((this.inventory.inventoryId !== undefined && this.inventory.inventoryMangedBy !== undefined) ||
+      (this.inventory.inventoryId === null) || (this.inventory.inventoryMangedBy === null)) {
       this.inventoryService.updateInventory(this.inventory).subscribe(updatedInventory => {
         console.log(updatedInventory);
         if (updatedInventory === null) {
