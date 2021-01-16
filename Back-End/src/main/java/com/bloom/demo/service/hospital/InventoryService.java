@@ -16,6 +16,6 @@ public interface InventoryService {
 
     Flux<Inventory> getInventoriesByNurseId(String nurseId);
 
-    Mono<Long> getNumberByRecordType(String recordType);
+    Mono<Long> getNumberOfRecordByRecordType(String recordType);
 
 }

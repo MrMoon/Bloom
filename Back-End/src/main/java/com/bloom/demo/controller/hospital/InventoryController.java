@@ -27,7 +27,7 @@ public class InventoryController {
 
     @GetMapping("/number/{recordType}")
     public Mono<Long> getInventoryRecordTypeNumbers(@PathVariable("recordType") String recordType) {
-        return this.inventoryService.getNumberByRecordType(recordType);
+        return this.inventoryService.getNumberOfRecordByRecordType(recordType);
     }
 
     @PostMapping("/")

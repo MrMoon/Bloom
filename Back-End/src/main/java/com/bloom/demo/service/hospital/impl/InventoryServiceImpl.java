@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Locale;
+
 @Service
 @RequiredArgsConstructor
 public class InventoryServiceImpl implements InventoryService {
@@ -19,6 +21,7 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public Mono<Inventory> createInventory(Inventory inventory) {
+        inventory.setInventoryRecordType(inventory.getInventoryRecordType().toUpperCase(Locale.ROOT));
         return this.nurseRepository.findById(inventory.getInventoryMangedBy()).flatMap(nurse -> {
             if (nurse.getNurseRank().equals(Rank.ONE)) return this.inventoryRepository.save(inventory);
             else return Mono.empty();
@@ -32,7 +35,11 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public Mono<Inventory> updateInventory(Inventory inventory) {
-        return this.inventoryRepository.save(inventory);
+        inventory.setInventoryRecordType(inventory.getInventoryRecordType().toUpperCase(Locale.ROOT));
+        return this.nurseRepository.findById(inventory.getInventoryMangedBy()).flatMap(nurse -> {
+            if (nurse.getNurseRank().equals(Rank.ONE)) return this.inventoryRepository.save(inventory);
+            else return Mono.empty();
+        });
     }
 
     @Override
@@ -46,9 +53,10 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
-    public Mono<Long> getNumberByRecordType(String recordType) {
+    public Mono<Long> getNumberOfRecordByRecordType(String recordType) {
         return this.inventoryRepository
                 .findAllByInventoryRecordType(recordType)
-                .count();
+                .flatMap(inventory -> Mono.just(inventory.getInventoryAmount().longValue()))
+                .reduce(0L, Long::sum);
     }
 }
