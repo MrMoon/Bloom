@@ -41,16 +41,16 @@
           </div>
           <div class="form-group">
             <div class="input-group">
-              <input [(ngModel)]="employee.employeeSalary" aria-label="Amount " class="form-control"
+              <div class="input-group-prepend">
+                <span class="input-group-text">Salary  $</span>
+              </div>
+              <input (focus)="clearSalary()" [(ngModel)]="employee.employeeSalary" aria-label="Amount "
+                     class="form-control"
                      name="employeeSalary"
-                     (focus)="clearSalary()"
                      required
                      type="number">
               <div class="input-group-prepend">
-                <span class="input-group-text">$</span>
-              </div>
-              <div class="input-group-prepend">
-                <span class="input-group-text">{{employee.employeeSalary}}</span>
+                <span class="input-group-text">{{employee.employeeSalary}} $</span>
               </div>
             </div>
           </div>
@@ -133,13 +133,16 @@
                     <div class="preview-item border-bottom">
                       <div class="preview-item-content d-sm-flex flex-grow">
                         <div class="flex-grow">
-                          <h6 class="preview-subject">{{emp.employeeName}}</h6>
                           <p class="text-muted mb-0">{{emp.employeeId}}</p>
+                          <h6 class="preview-subject">{{emp.employeeName}}</h6>
+                          <h6 class="preview-subject">{{emp.employeeSalary}} $</h6>
                         </div>
                         <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                          <p class="text-muted">{{emp.employeeSalary}} $</p>
                           <p
                             [ngClass]="((emp.employeeJobType === 'NURSE') ? 'purple' : ((emp.employeeJobType === 'DOCTOR') ? 'blue' : 'green'))">{{emp.employeeJobType}}</p>
+                          <button (click)="deleteEmployee(emp)" class="btn btn-outline-danger btn-fw"
+                                  type="button">Delete Patient
+                          </button>
                         </div>
                       </div>
                     </div>

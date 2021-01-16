@@ -121,4 +121,22 @@ export class EmployeeComponent implements OnInit {
       this.flag = true;
     }
   }
+
+  deleteEmployee(employee: Employee) {
+    console.log(employee);
+    this.toast.clear();
+    this.employeeService.deleteEmployee(employee.employeeId).subscribe(value => {
+      if (value.status === 200) {
+        const index = this.employees.indexOf(employee);
+        if (index > -1) {
+          this.employees.splice(index, 1);
+          this.toast.success('Employee ' + employee.employeeId + ' Deleted Successfully\n', 'Employee Delete Status');
+        } else {
+          this.toast.error('Employee ' + employee.employeeId + ' Delete Failed!!\n', 'Employee Delete Status');
+        }
+      } else {
+        this.toast.error('Employee ' + employee.employeeId + ' Delete Failed!!\n', 'Employee Delete Status');
+      }
+    }, error => this.toast.error('Employee ' + employee.employeeId + ' Delete Failed!!\n' + error, 'Employee Delete Status'));
+  }
 }
