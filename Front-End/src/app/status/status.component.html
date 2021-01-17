@@ -146,6 +146,11 @@
   <div *ngIf="salaryBarChartIsReady" class="col-sm-4 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
+        <div class="d-flex d-sm-block d-md-flex align-items-center">
+          <h3>{{salaryNumbers.length}}
+            Unique {{salaryNumbers.length == 0 || salaryNumbers.length == 1 ? 'Salary' : 'Salaries'}}</h3>
+        </div>
+        <hr/>
         <h4 class="card-title">Salary Analysis</h4>
         <canvas [chartType]="'bar'" [colors]="barChartColors" [datasets]="salaryFreq" [labels]="salaryNumbers"
                 [options]="barChartOptions" baseChart></canvas>
@@ -155,6 +160,11 @@
   <div *ngIf="jobTypePieChartIsReady" class="col-sm-4 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
+        <div class="d-flex d-sm-block d-md-flex align-items-center">
+          <h3 class="mb-0">{{jobTypePieChartLabels.length}}
+            Unique {{jobTypePieChartLabels.length == 0 || jobTypePieChartLabels.length == 1 ? 'Job' : 'Jobs'}}</h3>
+        </div>
+        <hr/>
         <h4 class="card-title">Job Type Analysis</h4>
         <canvas [chartType]="'doughnut'" [colors]="doughnutPieChartColors" [datasets]="jobTypePieChartData"
                 [labels]="jobTypePieChartLabels"
