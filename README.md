@@ -1,7 +1,8 @@
-
 # Bloom
-Bloom project is a hospital web application that is based on the Database Systemes project requirements
-Build using 
+![Bloom Dashboard](Pictures/Dashboard3.png)
+Bloom project is a hospital web application that is based on the Database Systemes project requirements, more details in the [System Analysis Folder](https://github.com/MrMoon/Bloom/tree/master/System%20Analysis)
+you can find screenshots in the [Pictures Folder] (https://github.com/MrMoon/Bloom/tree/master/Pictures)
+Built using:
  - Java
  - Spring
     - Core
@@ -14,5 +15,8 @@ Build using
  - Project Reactor
  - R2DBC
  - Angular
+ - TypeScript
+ - Sass
+ - HTML5
  - RxJS
  - Postgres
